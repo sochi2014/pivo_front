@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "305370310235",
+    "project_id": "pivo-b21a0",
+    "storage_bucket": "pivo-b21a0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305370310235:android:056fe1c3f8747e6c8fc17e",
+        "android_client_info": {
+          "package_name": "com.itmo.pivo.app.pivo_front"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDx6_lHc4Bs3n_F6SzSrvg4MKlV0ed-taw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
