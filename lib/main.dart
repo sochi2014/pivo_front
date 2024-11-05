@@ -14,7 +14,7 @@ void main() {
       options: DefaultFirebaseOptions.currentPlatform,
     );
 
-    runApp(const App());
+    runApp(App());
   }, (error, stackTrace) {
     debugPrintStack(stackTrace: stackTrace);
     debugPrint(error.toString());
