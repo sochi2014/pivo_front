@@ -7,5 +7,17 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get helloWorld => 'Hello World!';
+  String get title => 'Beer Harmony';
+
+  @override
+  String get birthdayLabel => 'Birthday';
+
+  @override
+  String get countryLabel => 'Country';
+
+  @override
+  String get check => 'Check';
+
+  @override
+  String get verificationTitle => 'Let\'s make sure that you have reached the legal drinking age in your country.';
 }

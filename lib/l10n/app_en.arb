@@ -1,6 +1,7 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "title": "Beer Harmony",
+  "birthdayLabel": "Birthday",
+    "countryLabel": "Country",
+    "check": "Check",
+  "verificationTitle": "Let's make sure that you have reached the legal drinking age in your country."
 }
