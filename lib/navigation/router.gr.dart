@@ -66,6 +66,62 @@ class AuthRouteWidgetArgs {
 }
 
 /// generated route for
+/// [ChooseCityPageWidget]
+class ChooseCityRouteWidget extends PageRouteInfo<ChooseCityRouteWidgetArgs> {
+  ChooseCityRouteWidget({
+    Profile? profile,
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultChooseCityPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ChooseCityRouteWidget.name,
+          args: ChooseCityRouteWidgetArgs(
+            profile: profile,
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ChooseCityRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ChooseCityRouteWidgetArgs>(
+          orElse: () => const ChooseCityRouteWidgetArgs());
+      return ChooseCityPageWidget(
+        profile: args.profile,
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class ChooseCityRouteWidgetArgs {
+  const ChooseCityRouteWidgetArgs({
+    this.profile,
+    this.key,
+    this.wmFactory = defaultChooseCityPageWidgetModelFactory,
+  });
+
+  final Profile? profile;
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'ChooseCityRouteWidgetArgs{profile: $profile, key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [DisablePage]
 class DisableRoute extends PageRouteInfo<void> {
   const DisableRoute({List<PageRouteInfo>? children})

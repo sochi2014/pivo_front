@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pivo_front/data/repository/token_ropository.dart';
+import 'package:pivo_front/data/url/auth_url.dart';
 
 /// Interceptor for working with JWT tokens, updating and saving them.
 /// Requires [Dio] to work.
@@ -35,11 +36,15 @@ class JWTInterceptor extends QueuedInterceptor {
   /// Save tokens received after authorization.
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) async {
-    if (response.requestOptions.path == '/auth/email/part2') {
-      repository.saveTokens(
-        accessToken: response.data['access_token'],
-        refreshToken: response.data['refresh_token'],
-      );
+    if (response.requestOptions.path == AuthUrl.authEmailPart2) {
+      final accessToken = response.data['access_token'];
+      final refreshToken = response.data['refresh_token'];
+      if (accessToken != null && refreshToken != null) {
+        repository.saveTokens(
+          accessToken: accessToken,
+          refreshToken: refreshToken,
+        );
+      }
     }
 
     super.onResponse(response, handler);

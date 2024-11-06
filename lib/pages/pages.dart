@@ -1,5 +1,7 @@
 export 'auth_page/auth_page_widget.dart';
 export 'auth_page/auth_page_wm.dart';
+export 'choose_city_page/choose_city_page_widget.dart';
+export 'choose_city_page/choose_city_page_wm.dart';
 export 'disable_page/disable_page.dart';
 export 'home_page/home_page.dart';
 export 'map_page/map_page_widget.dart';

@@ -86,7 +86,6 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
         ),
       );
       authStateController.add(AuthState.code);
-      print(authStateController.value);
     } on DioException catch (error) {
       authStateController.add(AuthState.register);
       throw Exception(

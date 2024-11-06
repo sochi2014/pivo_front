@@ -27,7 +27,8 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
         return ListView(
           children: [
             CircleAvatar(
-              foregroundImage: NetworkImage(
+              radius: 150,
+              backgroundImage: NetworkImage(
                 data.avatarUrl ?? '',
               ),
               onBackgroundImageError: (_, __) => Icon(Icons.man),

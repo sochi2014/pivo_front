@@ -55,6 +55,7 @@ class AppRouter extends RootStackRouter {
           ],
         ),
         AutoRoute(page: DisableRoute.page),
+        AutoRoute(page: ChooseCityRouteWidget.page),
         AutoRoute(
           page: VerificationRouteWidget.page,
           initial: true,
