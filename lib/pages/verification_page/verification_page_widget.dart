@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
-import 'package:pivo_front/entity/country.dart';
+import 'package:pivo_front/domain/entity/country.dart';
 
 import 'verification_page_wm.dart';
 

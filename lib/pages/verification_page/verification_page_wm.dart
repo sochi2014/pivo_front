@@ -2,7 +2,7 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:pivo_front/entity/country.dart';
+import 'package:pivo_front/domain/entity/country.dart';
 import 'package:pivo_front/navigation/router.dart';
 import 'package:pivo_front/util/responsive_widget.dart';
 import 'package:pivo_front/util/theme_provider.dart';

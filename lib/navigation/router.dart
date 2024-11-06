@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:pivo_front/domain/entity/profile.dart';
 import 'package:pivo_front/pages/pages.dart';
 
 part 'router.gr.dart';
@@ -42,7 +43,13 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: ProfileTab.page,
               children: [
-                AutoRoute(page: DisableRoute.page),
+                AutoRoute(
+                  page: ProfileRouteWidget.page,
+                  initial: true,
+                ),
+                AutoRoute(
+                  page: AuthRouteWidget.page,
+                ),
               ],
             ),
           ],

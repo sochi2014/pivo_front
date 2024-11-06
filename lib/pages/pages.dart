@@ -1,6 +1,11 @@
+export 'auth_page/auth_page_widget.dart';
+export 'auth_page/auth_page_wm.dart';
 export 'disable_page/disable_page.dart';
 export 'home_page/home_page.dart';
 export 'map_page/map_page_widget.dart';
 export 'map_page/map_page_wm.dart';
+export 'profile_page/profile_page_widget.dart';
+export 'profile_page/profile_page_wm.dart';
+export 'promo_page/promo_page.dart';
 export 'verification_page/verification_page_widget.dart';
 export 'verification_page/verification_page_wm.dart';
