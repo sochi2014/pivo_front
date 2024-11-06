@@ -119,6 +119,36 @@ abstract class AppLocalizations {
   /// **'Check'**
   String get check;
 
+  /// No description provided for @feed.
+  ///
+  /// In en, this message translates to:
+  /// **'Feed'**
+  String get feed;
+
+  /// No description provided for @catalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog'**
+  String get catalog;
+
+  /// No description provided for @map.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get map;
+
+  /// No description provided for @chat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chat;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get profile;
+
   /// No description provided for @verificationTitle.
   ///
   /// In en, this message translates to:

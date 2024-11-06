@@ -19,5 +19,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get check => 'Check';
 
   @override
+  String get feed => 'Feed';
+
+  @override
+  String get catalog => 'Catalog';
+
+  @override
+  String get map => 'Search';
+
+  @override
+  String get chat => 'Chat';
+
+  @override
+  String get profile => 'Account';
+
+  @override
   String get verificationTitle => 'Let\'s make sure that you have reached the legal drinking age in your country.';
 }

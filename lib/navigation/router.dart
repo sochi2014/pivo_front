@@ -11,6 +11,41 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(
           page: HomeRoute.page,
+          children: [
+            AutoRoute(
+              page: FeedTab.page,
+              children: [
+                AutoRoute(page: DisableRoute.page),
+              ],
+            ),
+            AutoRoute(
+              page: CatalogTab.page,
+              children: [
+                AutoRoute(page: DisableRoute.page),
+              ],
+            ),
+            AutoRoute(
+              page: MapTab.page,
+              children: [
+                AutoRoute(
+                  page: MapRouteWidget.page,
+                  initial: true,
+                ),
+              ],
+            ),
+            AutoRoute(
+              page: ChatsTab.page,
+              children: [
+                AutoRoute(page: DisableRoute.page),
+              ],
+            ),
+            AutoRoute(
+              page: ProfileTab.page,
+              children: [
+                AutoRoute(page: DisableRoute.page),
+              ],
+            ),
+          ],
         ),
         AutoRoute(page: DisableRoute.page),
         AutoRoute(
@@ -19,3 +54,9 @@ class AppRouter extends RootStackRouter {
         ),
       ];
 }
+
+const FeedTab = EmptyShellRoute('FeedTab');
+const CatalogTab = EmptyShellRoute('CatalogTab');
+const MapTab = EmptyShellRoute('MapTab');
+const ChatsTab = EmptyShellRoute('ChatsTab');
+const ProfileTab = EmptyShellRoute('ProfileTab');

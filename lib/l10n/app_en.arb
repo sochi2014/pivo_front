@@ -3,5 +3,10 @@
   "birthdayLabel": "Birthday",
     "countryLabel": "Country",
     "check": "Check",
+    "feed": "Feed",
+    "catalog": "Catalog",
+    "map": "Search",
+       "chat": "Chat",
+       "profile": "Account",
   "verificationTitle": "Let's make sure that you have reached the legal drinking age in your country."
 }

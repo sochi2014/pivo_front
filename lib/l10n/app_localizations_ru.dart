@@ -19,5 +19,20 @@ class AppLocalizationsRu extends AppLocalizations {
   String get check => 'Проверить';
 
   @override
+  String get feed => 'Новости';
+
+  @override
+  String get catalog => 'Каталог';
+
+  @override
+  String get map => 'Поиск';
+
+  @override
+  String get chat => 'Чат';
+
+  @override
+  String get profile => 'Профиль';
+
+  @override
   String get verificationTitle => 'Давайте убедимся, что вы достигли законного возраста употребления алкоголя в вашей стране.';
 }

@@ -48,6 +48,56 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MapPageWidget]
+class MapRouteWidget extends PageRouteInfo<MapRouteWidgetArgs> {
+  MapRouteWidget({
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultMapPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MapRouteWidget.name,
+          args: MapRouteWidgetArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MapRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<MapRouteWidgetArgs>(
+          orElse: () => const MapRouteWidgetArgs());
+      return MapPageWidget(
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class MapRouteWidgetArgs {
+  const MapRouteWidgetArgs({
+    this.key,
+    this.wmFactory = defaultMapPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'MapRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [VerificationPageWidget]
 class VerificationRouteWidget
     extends PageRouteInfo<VerificationRouteWidgetArgs> {
