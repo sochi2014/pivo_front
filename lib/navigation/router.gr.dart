@@ -66,6 +66,62 @@ class AuthRouteWidgetArgs {
 }
 
 /// generated route for
+/// [BeerPageWidget]
+class BeerRouteWidget extends PageRouteInfo<BeerRouteWidgetArgs> {
+  BeerRouteWidget({
+    Key? key,
+    bool topMode = false,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultBeerPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BeerRouteWidget.name,
+          args: BeerRouteWidgetArgs(
+            key: key,
+            topMode: topMode,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BeerRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BeerRouteWidgetArgs>(
+          orElse: () => const BeerRouteWidgetArgs());
+      return BeerPageWidget(
+        key: args.key,
+        topMode: args.topMode,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class BeerRouteWidgetArgs {
+  const BeerRouteWidgetArgs({
+    this.key,
+    this.topMode = false,
+    this.wmFactory = defaultBeerPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final bool topMode;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'BeerRouteWidgetArgs{key: $key, topMode: $topMode, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [ChooseCityPageWidget]
 class ChooseCityRouteWidget extends PageRouteInfo<ChooseCityRouteWidgetArgs> {
   ChooseCityRouteWidget({

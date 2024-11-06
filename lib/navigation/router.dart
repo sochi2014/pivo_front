@@ -22,7 +22,10 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: CatalogTab.page,
               children: [
-                AutoRoute(page: DisableRoute.page),
+                AutoRoute(
+                  page: BeerRouteWidget.page,
+                  initial: true,
+                ),
               ],
             ),
             AutoRoute(

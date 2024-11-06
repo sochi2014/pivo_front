@@ -6,7 +6,6 @@ part 'profile.g.dart';
 @freezed
 class Profile with _$Profile {
   @JsonSerializable(
-    explicitToJson: true,
     includeIfNull: false,
   )
   const factory Profile({

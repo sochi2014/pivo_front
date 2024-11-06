@@ -7,6 +7,7 @@ import 'package:pivo_front/data/repository/dadata_repository.dart';
 import 'package:pivo_front/data/repository/geolocation_repository.dart';
 import 'package:pivo_front/data/repository/token_ropository.dart';
 import 'package:pivo_front/data/service/auth_service.dart';
+import 'package:pivo_front/data/service/beer_service.dart';
 import 'package:pivo_front/domain/use_case/profile_use_case.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -23,6 +24,7 @@ class AppComponents {
   final Dio dio = Dio();
 
   late final AuthService authService = AuthService(dio);
+  late final BeerService beerService = BeerService(dio);
 
   // late final BannerService bannerService = BannerService(dio);
   // late final GeozonesService geozonesService = GeozonesService(dio);

@@ -130,7 +130,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable(includeIfNull: false)
 class _$ProfileImpl implements _Profile {
   const _$ProfileImpl(
       {required this.email,
