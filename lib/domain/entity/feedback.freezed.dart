@@ -23,12 +23,9 @@ mixin _$Feedback {
   int get id => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   int get ratings => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'beer_id')
-  int? get beerId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'place_id')
-  int? get placeId => throw _privateConstructorUsedError;
+  Profile get user => throw _privateConstructorUsedError;
+  Beer? get beer => throw _privateConstructorUsedError;
+  Place? get place => throw _privateConstructorUsedError;
   @JsonKey(name: 'type_feedback')
   TypeFeedback get type => throw _privateConstructorUsedError;
   List<Photo> get photos => throw _privateConstructorUsedError;
@@ -52,11 +49,15 @@ abstract class $FeedbackCopyWith<$Res> {
       {int id,
       String text,
       int ratings,
-      @JsonKey(name: 'user_id') int userId,
-      @JsonKey(name: 'beer_id') int? beerId,
-      @JsonKey(name: 'place_id') int? placeId,
+      Profile user,
+      Beer? beer,
+      Place? place,
       @JsonKey(name: 'type_feedback') TypeFeedback type,
       List<Photo> photos});
+
+  $ProfileCopyWith<$Res> get user;
+  $BeerCopyWith<$Res>? get beer;
+  $PlaceCopyWith<$Res>? get place;
 }
 
 /// @nodoc
@@ -77,9 +78,9 @@ class _$FeedbackCopyWithImpl<$Res, $Val extends Feedback>
     Object? id = null,
     Object? text = null,
     Object? ratings = null,
-    Object? userId = null,
-    Object? beerId = freezed,
-    Object? placeId = freezed,
+    Object? user = null,
+    Object? beer = freezed,
+    Object? place = freezed,
     Object? type = null,
     Object? photos = null,
   }) {
@@ -96,18 +97,18 @@ class _$FeedbackCopyWithImpl<$Res, $Val extends Feedback>
           ? _value.ratings
           : ratings // ignore: cast_nullable_to_non_nullable
               as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      beerId: freezed == beerId
-          ? _value.beerId
-          : beerId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      placeId: freezed == placeId
-          ? _value.placeId
-          : placeId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as Profile,
+      beer: freezed == beer
+          ? _value.beer
+          : beer // ignore: cast_nullable_to_non_nullable
+              as Beer?,
+      place: freezed == place
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -117,6 +118,44 @@ class _$FeedbackCopyWithImpl<$Res, $Val extends Feedback>
           : photos // ignore: cast_nullable_to_non_nullable
               as List<Photo>,
     ) as $Val);
+  }
+
+  /// Create a copy of Feedback
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProfileCopyWith<$Res> get user {
+    return $ProfileCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Feedback
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $BeerCopyWith<$Res>? get beer {
+    if (_value.beer == null) {
+      return null;
+    }
+
+    return $BeerCopyWith<$Res>(_value.beer!, (value) {
+      return _then(_value.copyWith(beer: value) as $Val);
+    });
+  }
+
+  /// Create a copy of Feedback
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PlaceCopyWith<$Res>? get place {
+    if (_value.place == null) {
+      return null;
+    }
+
+    return $PlaceCopyWith<$Res>(_value.place!, (value) {
+      return _then(_value.copyWith(place: value) as $Val);
+    });
   }
 }
 
@@ -132,11 +171,18 @@ abstract class _$$FeedbackImplCopyWith<$Res>
       {int id,
       String text,
       int ratings,
-      @JsonKey(name: 'user_id') int userId,
-      @JsonKey(name: 'beer_id') int? beerId,
-      @JsonKey(name: 'place_id') int? placeId,
+      Profile user,
+      Beer? beer,
+      Place? place,
       @JsonKey(name: 'type_feedback') TypeFeedback type,
       List<Photo> photos});
+
+  @override
+  $ProfileCopyWith<$Res> get user;
+  @override
+  $BeerCopyWith<$Res>? get beer;
+  @override
+  $PlaceCopyWith<$Res>? get place;
 }
 
 /// @nodoc
@@ -155,9 +201,9 @@ class __$$FeedbackImplCopyWithImpl<$Res>
     Object? id = null,
     Object? text = null,
     Object? ratings = null,
-    Object? userId = null,
-    Object? beerId = freezed,
-    Object? placeId = freezed,
+    Object? user = null,
+    Object? beer = freezed,
+    Object? place = freezed,
     Object? type = null,
     Object? photos = null,
   }) {
@@ -174,18 +220,18 @@ class __$$FeedbackImplCopyWithImpl<$Res>
           ? _value.ratings
           : ratings // ignore: cast_nullable_to_non_nullable
               as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-      beerId: freezed == beerId
-          ? _value.beerId
-          : beerId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      placeId: freezed == placeId
-          ? _value.placeId
-          : placeId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      user: null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as Profile,
+      beer: freezed == beer
+          ? _value.beer
+          : beer // ignore: cast_nullable_to_non_nullable
+              as Beer?,
+      place: freezed == place
+          ? _value.place
+          : place // ignore: cast_nullable_to_non_nullable
+              as Place?,
       type: null == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -205,9 +251,9 @@ class _$FeedbackImpl implements _Feedback {
       {required this.id,
       required this.text,
       required this.ratings,
-      @JsonKey(name: 'user_id') required this.userId,
-      @JsonKey(name: 'beer_id') this.beerId,
-      @JsonKey(name: 'place_id') this.placeId,
+      required this.user,
+      this.beer,
+      this.place,
       @JsonKey(name: 'type_feedback') required this.type,
       final List<Photo> photos = const []})
       : _photos = photos;
@@ -222,14 +268,11 @@ class _$FeedbackImpl implements _Feedback {
   @override
   final int ratings;
   @override
-  @JsonKey(name: 'user_id')
-  final int userId;
+  final Profile user;
   @override
-  @JsonKey(name: 'beer_id')
-  final int? beerId;
+  final Beer? beer;
   @override
-  @JsonKey(name: 'place_id')
-  final int? placeId;
+  final Place? place;
   @override
   @JsonKey(name: 'type_feedback')
   final TypeFeedback type;
@@ -244,7 +287,7 @@ class _$FeedbackImpl implements _Feedback {
 
   @override
   String toString() {
-    return 'Feedback(id: $id, text: $text, ratings: $ratings, userId: $userId, beerId: $beerId, placeId: $placeId, type: $type, photos: $photos)';
+    return 'Feedback(id: $id, text: $text, ratings: $ratings, user: $user, beer: $beer, place: $place, type: $type, photos: $photos)';
   }
 
   @override
@@ -255,17 +298,17 @@ class _$FeedbackImpl implements _Feedback {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.ratings, ratings) || other.ratings == ratings) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.beerId, beerId) || other.beerId == beerId) &&
-            (identical(other.placeId, placeId) || other.placeId == placeId) &&
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.beer, beer) || other.beer == beer) &&
+            (identical(other.place, place) || other.place == place) &&
             (identical(other.type, type) || other.type == type) &&
             const DeepCollectionEquality().equals(other._photos, _photos));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, text, ratings, userId,
-      beerId, placeId, type, const DeepCollectionEquality().hash(_photos));
+  int get hashCode => Object.hash(runtimeType, id, text, ratings, user, beer,
+      place, type, const DeepCollectionEquality().hash(_photos));
 
   /// Create a copy of Feedback
   /// with the given fields replaced by the non-null parameter values.
@@ -288,9 +331,9 @@ abstract class _Feedback implements Feedback {
       {required final int id,
       required final String text,
       required final int ratings,
-      @JsonKey(name: 'user_id') required final int userId,
-      @JsonKey(name: 'beer_id') final int? beerId,
-      @JsonKey(name: 'place_id') final int? placeId,
+      required final Profile user,
+      final Beer? beer,
+      final Place? place,
       @JsonKey(name: 'type_feedback') required final TypeFeedback type,
       final List<Photo> photos}) = _$FeedbackImpl;
 
@@ -304,14 +347,11 @@ abstract class _Feedback implements Feedback {
   @override
   int get ratings;
   @override
-  @JsonKey(name: 'user_id')
-  int get userId;
+  Profile get user;
   @override
-  @JsonKey(name: 'beer_id')
-  int? get beerId;
+  Beer? get beer;
   @override
-  @JsonKey(name: 'place_id')
-  int? get placeId;
+  Place? get place;
   @override
   @JsonKey(name: 'type_feedback')
   TypeFeedback get type;

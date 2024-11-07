@@ -1,4 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pivo_front/domain/entity/beer.dart';
+import 'package:pivo_front/domain/entity/place.dart';
+import 'package:pivo_front/domain/entity/profile.dart';
 
 import 'photo.dart';
 
@@ -13,9 +16,9 @@ class Feedback with _$Feedback {
     required int id,
     required String text,
     required int ratings,
-    @JsonKey(name: 'user_id') required int userId,
-    @JsonKey(name: 'beer_id') int? beerId,
-    @JsonKey(name: 'place_id') int? placeId,
+    required Profile user,
+    Beer? beer,
+    Place? place,
     @JsonKey(name: 'type_feedback') required TypeFeedback type,
     @Default([]) List<Photo> photos,
   }) = _Feedback;

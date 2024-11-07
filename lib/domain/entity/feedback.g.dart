@@ -11,9 +11,13 @@ _$FeedbackImpl _$$FeedbackImplFromJson(Map<String, dynamic> json) =>
       id: (json['id'] as num).toInt(),
       text: json['text'] as String,
       ratings: (json['ratings'] as num).toInt(),
-      userId: (json['user_id'] as num).toInt(),
-      beerId: (json['beer_id'] as num?)?.toInt(),
-      placeId: (json['place_id'] as num?)?.toInt(),
+      user: Profile.fromJson(json['user'] as Map<String, dynamic>),
+      beer: json['beer'] == null
+          ? null
+          : Beer.fromJson(json['beer'] as Map<String, dynamic>),
+      place: json['place'] == null
+          ? null
+          : Place.fromJson(json['place'] as Map<String, dynamic>),
       type: $enumDecode(_$TypeFeedbackEnumMap, json['type_feedback']),
       photos: (json['photos'] as List<dynamic>?)
               ?.map((e) => Photo.fromJson(e as Map<String, dynamic>))
@@ -26,9 +30,9 @@ Map<String, dynamic> _$$FeedbackImplToJson(_$FeedbackImpl instance) =>
       'id': instance.id,
       'text': instance.text,
       'ratings': instance.ratings,
-      'user_id': instance.userId,
-      'beer_id': instance.beerId,
-      'place_id': instance.placeId,
+      'user': instance.user,
+      'beer': instance.beer,
+      'place': instance.place,
       'type_feedback': _$TypeFeedbackEnumMap[instance.type]!,
       'photos': instance.photos,
     };

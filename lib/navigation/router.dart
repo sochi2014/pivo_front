@@ -21,7 +21,12 @@ class AppRouter extends RootStackRouter {
                   page: FeedRouteWidget.page,
                   initial: true,
                 ),
+                AutoRoute(
+                  path: ':beerId',
+                  page: BeerDatilRouteWidget.page,
+                ),
               ],
+              initial: true,
             ),
             AutoRoute(
               page: CatalogTab.page,

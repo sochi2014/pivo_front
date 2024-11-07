@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart' hide Feedback;
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:pivo_front/domain/entity/beer.dart';
 import 'package:pivo_front/domain/entity/feedback.dart';
 import 'package:pivo_front/domain/entity/photo.dart';
 import 'package:pivo_front/res/assets.dart';
@@ -38,60 +39,9 @@ class FeedPageWidget extends ElementaryWidget<IFeedPageWidgetModel> {
                   pagingController: wm.pagingController,
                   builderDelegate: PagedChildBuilderDelegate<Feedback>(
                     itemBuilder: (context, item, index) {
-                      return Card(
-                        clipBehavior: Clip.hardEdge,
-                        margin: EdgeInsets.zero,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(16),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ListTile(
-                                  contentPadding: EdgeInsets.zero,
-                                  leading: CircleAvatar(
-                                    child: Text(index.toString()),
-                                  ),
-                                  title: Text(
-                                    item.userId.toString(),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  subtitle: Text(
-                                    item.type.toString(),
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                                const Divider(),
-                                const SizedBox(height: 8),
-                                Text(item.text),
-                                const SizedBox(height: 8),
-                                if (item.photos.isNotEmpty)
-                                  PhotoList(
-                                    photos: item.photos,
-                                  ),
-                                const SizedBox(height: 8),
-                                Row(
-                                  children: [
-                                    IconButton.filledTonal(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.favorite),
-                                      visualDensity: VisualDensity.compact,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    FilledButton.tonalIcon(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.comment),
-                                      label: const Text('0'),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
+                      return FeedBackWidget(
+                        item: item,
+                        onBeerTap: wm.onBeerTap,
                       );
                     },
                   ),
@@ -100,6 +50,115 @@ class FeedPageWidget extends ElementaryWidget<IFeedPageWidgetModel> {
                   },
                 ),
               ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FeedBackWidget extends StatelessWidget {
+  const FeedBackWidget({
+    super.key,
+    required this.item,
+    this.onBeerTap,
+  });
+
+  final Feedback item;
+  final ValueChanged<Beer>? onBeerTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final beer = item.beer;
+    final place = item.place;
+
+    return Card(
+      clipBehavior: Clip.hardEdge,
+      margin: EdgeInsets.zero,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(16),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: CircleAvatar(
+                  foregroundImage: CachedNetworkImageProvider(
+                    item.user.avatarUrl ?? '',
+                  ),
+                ),
+                title: Text(
+                  item.user.username,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                subtitle: Text(
+                  item.user.email,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const Divider(),
+              const SizedBox(height: 8),
+              Text(item.text),
+              const SizedBox(height: 8),
+              if (item.photos.isNotEmpty)
+                PhotoList(
+                  photos: item.photos,
+                ),
+              if (beer != null) ...[
+                const SizedBox(height: 8),
+                ListTile(
+                  onTap: () => onBeerTap?.call(beer),
+                  contentPadding: EdgeInsets.zero,
+                  leading: AspectRatio(
+                    aspectRatio: 1,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(4),
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl: beer.photo ?? '',
+                        fit: BoxFit.cover,
+                        errorWidget: (_, __, ___) => Image.asset(
+                          Assets.pivoa[2],
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  title: Text(
+                    beer.name,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  subtitle: Text(
+                    beer.type ?? '',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  trailing: const Icon(
+                    Icons.navigate_next,
+                  ),
+                ),
+              ],
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  IconButton.filledTonal(
+                    onPressed: () {},
+                    icon: const Icon(Icons.favorite),
+                    visualDensity: VisualDensity.compact,
+                  ),
+                  const SizedBox(width: 10),
+                  FilledButton.tonalIcon(
+                    onPressed: () {},
+                    icon: const Icon(Icons.comment),
+                    label: const Text('0'),
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -121,7 +180,6 @@ class PhotoList extends StatefulWidget {
 }
 
 class _PhotoListState extends State<PhotoList> {
-
   final pageController = PageController();
 
   @override
@@ -152,10 +210,13 @@ class _PhotoListState extends State<PhotoList> {
             },
           ),
         ),
+        const SizedBox(height: 4),
         SmoothPageIndicator(
           controller: pageController,
-          count:  widget.photos.length,// PageController
-          effect:  const WormEffect(),
+          count: widget.photos.length, // PageController
+          effect: const WormEffect(
+            radius: 8,
+          ),
         ),
       ],
     );
