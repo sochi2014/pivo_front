@@ -34,7 +34,7 @@ class _AuthService implements AuthService {
     )
         .compose(
           _dio.options,
-          '/api/v1/auth_api/authorize',
+          '/api/v1/auth_routes/authorize',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -60,7 +60,7 @@ class _AuthService implements AuthService {
     )
         .compose(
           _dio.options,
-          '/api/v1/auth_api/authorize',
+          '/api/v1/auth_routes/authorize',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -93,7 +93,7 @@ class _AuthService implements AuthService {
     )
         .compose(
           _dio.options,
-          '/api/v1/users_api/me',
+          '/api/v1/users_routes/me',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -126,7 +126,7 @@ class _AuthService implements AuthService {
     )
         .compose(
           _dio.options,
-          '/api/v1/users_api/me',
+          '/api/v1/users_routes/me',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -159,7 +159,7 @@ class _AuthService implements AuthService {
     )
         .compose(
           _dio.options,
-          '/api/v1/auth_api/register',
+          '/api/v1/auth_routes/register',
           queryParameters: queryParameters,
           data: _data,
         )
