@@ -19,5 +19,62 @@ class AppLocalizationsRu extends AppLocalizations {
   String get check => 'Проверить';
 
   @override
+  String get feed => 'Новости';
+
+  @override
+  String get catalog => 'Каталог';
+
+  @override
+  String get map => 'Поиск';
+
+  @override
+  String get chat => 'Чат';
+
+  @override
+  String get profile => 'Профиль';
+
+  @override
+  String get loginOrRegister => 'Войти или зарегистрироваться';
+
+  @override
+  String get promo => 'Присоеденяйтесь к команде Хмельной Гармонии и познайте дзен пива!';
+
+  @override
+  String get promo1 => 'Делитесь своим мнением и обменивайтесь им с опытными экспертами';
+
+  @override
+  String get promo2 => 'Собирайтесь с друзьями';
+
+  @override
+  String get promo3 => 'Найдите лучшее хмельное';
+
+  @override
+  String get loginHint => 'Авторизуйтись, чтобы получить доступ ко всем\nвозможностям портала.';
+
+  @override
+  String get login => 'Войти';
+
+  @override
+  String get invalidEmail => 'Неверный email';
+
+  @override
+  String get emptyUsername => 'Заполните имяпользователя';
+
+  @override
+  String get invalidCode => 'Неверный код';
+
+  @override
+  String get registerHint => 'Регистрация нового аккаунта';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get username => 'Имя пользователя';
+
+  @override
+  String get register => 'Зарегистрироваться';
+
+  @override
   String get verificationTitle => 'Давайте убедимся, что вы достигли законного возраста употребления алкоголя в вашей стране.';
 }

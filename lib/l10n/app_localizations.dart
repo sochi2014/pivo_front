@@ -119,6 +119,120 @@ abstract class AppLocalizations {
   /// **'Check'**
   String get check;
 
+  /// No description provided for @feed.
+  ///
+  /// In en, this message translates to:
+  /// **'Feed'**
+  String get feed;
+
+  /// No description provided for @catalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog'**
+  String get catalog;
+
+  /// No description provided for @map.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get map;
+
+  /// No description provided for @chat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chat;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get profile;
+
+  /// No description provided for @loginOrRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in / Sign in'**
+  String get loginOrRegister;
+
+  /// No description provided for @promo.
+  ///
+  /// In en, this message translates to:
+  /// **'Join the Intoxicating Harmony team and experience the zen of beer!'**
+  String get promo;
+
+  /// No description provided for @promo1.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your opinion and share it with experienced experts'**
+  String get promo1;
+
+  /// No description provided for @promo2.
+  ///
+  /// In en, this message translates to:
+  /// **'Gather with your friends'**
+  String get promo2;
+
+  /// No description provided for @promo3.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the best hops'**
+  String get promo3;
+
+  /// No description provided for @loginHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to access all the features of the portal.'**
+  String get loginHint;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email'**
+  String get invalidEmail;
+
+  /// No description provided for @emptyUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill username'**
+  String get emptyUsername;
+
+  /// No description provided for @invalidCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid code'**
+  String get invalidCode;
+
+  /// No description provided for @registerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration'**
+  String get registerHint;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
   /// No description provided for @verificationTitle.
   ///
   /// In en, this message translates to:

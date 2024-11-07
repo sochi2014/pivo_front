@@ -1,5 +1,5 @@
 import 'package:elementary/elementary.dart';
-import 'package:pivo_front/entity/country.dart';
+import 'package:pivo_front/domain/entity/country.dart';
 
 // TODO: cover with documentation
 /// Default Elementary model for VerificationPage module
