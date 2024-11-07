@@ -22,5 +22,12 @@
     "email": "Email",
     "username": "Имя пользователя",
     "register": "Зарегистрироваться",
+     "feedbackBeerTitle": "Отзыв на пиво",
+         "feedbackPlaceTitle": "Отзыв на бар",
+         "feedbackFeelings": "Опишите свои впечатления:",
+         "feedbackRateBeer": "Оцените пиво:",
+         "feedbackRatePlace": "Оцените бар:",
+         "feedbackSharePhotos": "Поделитесь фото:",
+         "send": "Отправить",
   "verificationTitle": "Давайте убедимся, что вы достигли законного возраста употребления алкоголя в вашей стране."
 }

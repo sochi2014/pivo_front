@@ -233,6 +233,48 @@ abstract class AppLocalizations {
   /// **'Register'**
   String get register;
 
+  /// No description provided for @feedbackBeerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review on beer'**
+  String get feedbackBeerTitle;
+
+  /// No description provided for @feedbackPlaceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review on place'**
+  String get feedbackPlaceTitle;
+
+  /// No description provided for @feedbackFeelings.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe your feelings:'**
+  String get feedbackFeelings;
+
+  /// No description provided for @feedbackRateBeer.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate beer:'**
+  String get feedbackRateBeer;
+
+  /// No description provided for @feedbackRatePlace.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate place:'**
+  String get feedbackRatePlace;
+
+  /// No description provided for @feedbackSharePhotos.
+  ///
+  /// In en, this message translates to:
+  /// **'Share photos:'**
+  String get feedbackSharePhotos;
+
+  /// No description provided for @send.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
   /// No description provided for @verificationTitle.
   ///
   /// In en, this message translates to:

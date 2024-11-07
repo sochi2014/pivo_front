@@ -102,7 +102,8 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
   }
 
   Widget _buildMap(List<Place> state, ValueChanged<Place> onTap) {
-    if (defaultTargetPlatform == TargetPlatform.iOS ||
+    if (!kIsWeb && !kIsWasm ||
+        defaultTargetPlatform == TargetPlatform.iOS ||
         defaultTargetPlatform == TargetPlatform.android) {
       return MobileMap(
         key: mapKey,

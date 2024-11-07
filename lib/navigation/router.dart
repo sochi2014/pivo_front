@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:pivo_front/domain/entity/beer.dart';
+import 'package:pivo_front/domain/entity/feedback.dart';
+import 'package:pivo_front/domain/entity/place.dart';
 import 'package:pivo_front/domain/entity/profile.dart';
 import 'package:pivo_front/pages/pages.dart';
 
@@ -16,8 +19,16 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: FeedTab.page,
               children: [
-                AutoRoute(page: DisableRoute.page),
+                AutoRoute(
+                  page: FeedRouteWidget.page,
+                  initial: true,
+                ),
+                AutoRoute(
+                  path: ':beerId',
+                  page: BeerDatilRouteWidget.page,
+                ),
               ],
+              initial: true,
             ),
             AutoRoute(
               page: CatalogTab.page,
@@ -25,6 +36,10 @@ class AppRouter extends RootStackRouter {
                 AutoRoute(
                   page: BeerRouteWidget.page,
                   initial: true,
+                ),
+                AutoRoute(
+                  path: ':beerId',
+                  page: BeerDatilRouteWidget.page,
                 ),
               ],
             ),
@@ -58,6 +73,9 @@ class AppRouter extends RootStackRouter {
           ],
         ),
         AutoRoute(page: DisableRoute.page),
+        AutoRoute(
+          page: FeedbackRouteWidget.page,
+        ),
         AutoRoute(page: ChooseCityRouteWidget.page),
         AutoRoute(
           page: VerificationRouteWidget.page,

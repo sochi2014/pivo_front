@@ -14,5 +14,8 @@ abstract class BeerService {
   }) = _BeerService;
 
   @GET(BeerUrl.beer)
-  Future<List<Beer>> getBeer(@Queries()BeerConfig beer);
+  Future<List<Beer>> getBeer(@Queries() BeerConfig beer);
+
+  @GET(BeerUrl.beerById)
+  Future<Beer> getBeerById(@Path() int id);
 }

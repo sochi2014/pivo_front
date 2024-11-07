@@ -76,5 +76,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get register => 'Register';
 
   @override
+  String get feedbackBeerTitle => 'Review on beer';
+
+  @override
+  String get feedbackPlaceTitle => 'Review on place';
+
+  @override
+  String get feedbackFeelings => 'Describe your feelings:';
+
+  @override
+  String get feedbackRateBeer => 'Rate beer:';
+
+  @override
+  String get feedbackRatePlace => 'Rate place:';
+
+  @override
+  String get feedbackSharePhotos => 'Share photos:';
+
+  @override
+  String get send => 'Send';
+
+  @override
   String get verificationTitle => 'Let\'s make sure that you have reached the legal drinking age in your country.';
 }
