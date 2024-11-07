@@ -1,6 +1,27 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "title": "Beer Harmony",
+  "birthdayLabel": "Birthday",
+    "countryLabel": "Country",
+    "check": "Check",
+    "feed": "Feed",
+    "catalog": "Catalog",
+    "map": "Search",
+       "chat": "Chat",
+       "profile": "Account",
+       "loginOrRegister": "Log in / Sign in",
+
+    "promo": "Join the Intoxicating Harmony team and experience the zen of beer!",
+    "promo1": "Share your opinion and share it with experienced experts",
+    "promo2": "Gather with your friends",
+    "promo3": "Find the best hops",
+    "loginHint": "Log in to access all the features of the portal.",
+     "login": "Login",
+     "invalidEmail": "Invalid email",
+     "emptyUsername": "Fill username",
+     "invalidCode": "Invalid code",
+         "registerHint": "Registration",
+         "email": "Email",
+         "username": "Username",
+     "register": "Register",
+  "verificationTitle": "Let's make sure that you have reached the legal drinking age in your country."
 }

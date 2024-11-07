@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_ru.dart';
 
 // ignore_for_file: type=lint
 
@@ -65,8 +66,8 @@ abstract class AppLocalizations {
 
   final String localeName;
 
-  static AppLocalizations? of(BuildContext context) {
-    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  static AppLocalizations of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations)!;
   }
 
   static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
@@ -90,14 +91,153 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('en')
+    Locale('en'),
+    Locale('ru')
   ];
 
-  /// The conventional newborn programmer greeting
+  /// No description provided for @title.
   ///
   /// In en, this message translates to:
-  /// **'Hello World!'**
-  String get helloWorld;
+  /// **'Beer Harmony'**
+  String get title;
+
+  /// No description provided for @birthdayLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Birthday'**
+  String get birthdayLabel;
+
+  /// No description provided for @countryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get countryLabel;
+
+  /// No description provided for @check.
+  ///
+  /// In en, this message translates to:
+  /// **'Check'**
+  String get check;
+
+  /// No description provided for @feed.
+  ///
+  /// In en, this message translates to:
+  /// **'Feed'**
+  String get feed;
+
+  /// No description provided for @catalog.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalog'**
+  String get catalog;
+
+  /// No description provided for @map.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get map;
+
+  /// No description provided for @chat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chat;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get profile;
+
+  /// No description provided for @loginOrRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in / Sign in'**
+  String get loginOrRegister;
+
+  /// No description provided for @promo.
+  ///
+  /// In en, this message translates to:
+  /// **'Join the Intoxicating Harmony team and experience the zen of beer!'**
+  String get promo;
+
+  /// No description provided for @promo1.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your opinion and share it with experienced experts'**
+  String get promo1;
+
+  /// No description provided for @promo2.
+  ///
+  /// In en, this message translates to:
+  /// **'Gather with your friends'**
+  String get promo2;
+
+  /// No description provided for @promo3.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the best hops'**
+  String get promo3;
+
+  /// No description provided for @loginHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Log in to access all the features of the portal.'**
+  String get loginHint;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email'**
+  String get invalidEmail;
+
+  /// No description provided for @emptyUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill username'**
+  String get emptyUsername;
+
+  /// No description provided for @invalidCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid code'**
+  String get invalidCode;
+
+  /// No description provided for @registerHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration'**
+  String get registerHint;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @verificationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s make sure that you have reached the legal drinking age in your country.'**
+  String get verificationTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -109,7 +249,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'ru'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -121,6 +261,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en': return AppLocalizationsEn();
+    case 'ru': return AppLocalizationsRu();
   }
 
   throw FlutterError(

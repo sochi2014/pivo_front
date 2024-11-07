@@ -10,6 +10,174 @@
 part of 'router.dart';
 
 /// generated route for
+/// [AuthPageWidget]
+class AuthRouteWidget extends PageRouteInfo<AuthRouteWidgetArgs> {
+  AuthRouteWidget({
+    Key? key,
+    ValueChanged<Profile?>? authCallback,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultAuthPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AuthRouteWidget.name,
+          args: AuthRouteWidgetArgs(
+            key: key,
+            authCallback: authCallback,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AuthRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<AuthRouteWidgetArgs>(
+          orElse: () => const AuthRouteWidgetArgs());
+      return AuthPageWidget(
+        key: args.key,
+        authCallback: args.authCallback,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class AuthRouteWidgetArgs {
+  const AuthRouteWidgetArgs({
+    this.key,
+    this.authCallback,
+    this.wmFactory = defaultAuthPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final ValueChanged<Profile?>? authCallback;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'AuthRouteWidgetArgs{key: $key, authCallback: $authCallback, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [BeerPageWidget]
+class BeerRouteWidget extends PageRouteInfo<BeerRouteWidgetArgs> {
+  BeerRouteWidget({
+    Key? key,
+    bool topMode = false,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultBeerPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BeerRouteWidget.name,
+          args: BeerRouteWidgetArgs(
+            key: key,
+            topMode: topMode,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'BeerRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<BeerRouteWidgetArgs>(
+          orElse: () => const BeerRouteWidgetArgs());
+      return BeerPageWidget(
+        key: args.key,
+        topMode: args.topMode,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class BeerRouteWidgetArgs {
+  const BeerRouteWidgetArgs({
+    this.key,
+    this.topMode = false,
+    this.wmFactory = defaultBeerPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final bool topMode;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'BeerRouteWidgetArgs{key: $key, topMode: $topMode, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [ChooseCityPageWidget]
+class ChooseCityRouteWidget extends PageRouteInfo<ChooseCityRouteWidgetArgs> {
+  ChooseCityRouteWidget({
+    Profile? profile,
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultChooseCityPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ChooseCityRouteWidget.name,
+          args: ChooseCityRouteWidgetArgs(
+            profile: profile,
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ChooseCityRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ChooseCityRouteWidgetArgs>(
+          orElse: () => const ChooseCityRouteWidgetArgs());
+      return ChooseCityPageWidget(
+        profile: args.profile,
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class ChooseCityRouteWidgetArgs {
+  const ChooseCityRouteWidgetArgs({
+    this.profile,
+    this.key,
+    this.wmFactory = defaultChooseCityPageWidgetModelFactory,
+  });
+
+  final Profile? profile;
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'ChooseCityRouteWidgetArgs{profile: $profile, key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [DisablePage]
 class DisableRoute extends PageRouteInfo<void> {
   const DisableRoute({List<PageRouteInfo>? children})
@@ -45,6 +213,106 @@ class HomeRoute extends PageRouteInfo<void> {
       return const HomePage();
     },
   );
+}
+
+/// generated route for
+/// [MapPageWidget]
+class MapRouteWidget extends PageRouteInfo<MapRouteWidgetArgs> {
+  MapRouteWidget({
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultMapPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MapRouteWidget.name,
+          args: MapRouteWidgetArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MapRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<MapRouteWidgetArgs>(
+          orElse: () => const MapRouteWidgetArgs());
+      return MapPageWidget(
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class MapRouteWidgetArgs {
+  const MapRouteWidgetArgs({
+    this.key,
+    this.wmFactory = defaultMapPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'MapRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [ProfilePageWidget]
+class ProfileRouteWidget extends PageRouteInfo<ProfileRouteWidgetArgs> {
+  ProfileRouteWidget({
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultProfilePageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProfileRouteWidget.name,
+          args: ProfileRouteWidgetArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ProfileRouteWidgetArgs>(
+          orElse: () => const ProfileRouteWidgetArgs());
+      return ProfilePageWidget(
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class ProfileRouteWidgetArgs {
+  const ProfileRouteWidgetArgs({
+    this.key,
+    this.wmFactory = defaultProfilePageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'ProfileRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+  }
 }
 
 /// generated route for
