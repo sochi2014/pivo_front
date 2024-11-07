@@ -40,7 +40,7 @@ class _FeedbackService implements FeedbackService {
     )
         .compose(
           _dio.options,
-          '/api/v1/feedback_routes/',
+          '/api/v1/feedback_routes',
           queryParameters: queryParameters,
           data: _data,
         )

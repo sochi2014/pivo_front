@@ -40,7 +40,7 @@ class _PlaceService implements PlaceService {
     )
         .compose(
           _dio.options,
-          '/api/v1/place_routes/',
+          '/api/v1/place_routes',
           queryParameters: queryParameters,
           data: _data,
         )
