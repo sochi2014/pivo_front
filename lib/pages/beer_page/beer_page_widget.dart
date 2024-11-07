@@ -100,6 +100,7 @@ class BeerPageWidget extends ElementaryWidget<IBeerPageWidgetModel> {
                                     fit: BoxFit.cover,
                                     errorWidget: (_, __, ___) => Image.asset(
                                       Assets.pivoa[2],
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),

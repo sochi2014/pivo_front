@@ -44,7 +44,7 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
                   Positioned(
                     right: 0,
                     left: 0,
-                    bottom: 0,
+                    bottom: 75,
                     child: PointerContext(
                       child: ConstrainedBox(
                         constraints: const BoxConstraints(
