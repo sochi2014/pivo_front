@@ -6,13 +6,15 @@ import 'package:pivo_front/data/service/beer_service.dart';
 import 'package:pivo_front/domain/entity/beer.dart';
 import 'package:pivo_front/domain/entity/beer_config.dart';
 import 'package:pivo_front/internal/app_components.dart';
+import 'package:pivo_front/navigation/router.dart';
 import 'package:pivo_front/util/responsive_widget.dart';
+import 'package:pivo_front/util/theme_provider.dart';
 
 import 'beer_page_model.dart';
 import 'beer_page_widget.dart';
 
 abstract interface class IBeerPageWidgetModel
-    implements IWidgetModel, IResponsive {
+    implements IWidgetModel, IResponsive, IThemeProvider {
   PagingController<int, Beer> get pagingController;
 
   ValueListenable<(Beer, Beer, Beer)?> get beerTopState;
@@ -20,6 +22,8 @@ abstract interface class IBeerPageWidgetModel
   ValueListenable<BeerConfig> get configState;
 
   Future<void> refresh();
+
+  void openBeer(Beer item);
 }
 
 BeerPageWidgetModel defaultBeerPageWidgetModelFactory(BuildContext context) {
@@ -32,7 +36,7 @@ BeerPageWidgetModel defaultBeerPageWidgetModelFactory(BuildContext context) {
 // TODO: cover with documentation
 /// Default widget model for BeerPageWidget
 class BeerPageWidgetModel extends WidgetModel<BeerPageWidget, BeerPageModel>
-    with ResponsiveWidgetModelMixin
+    with ResponsiveWidgetModelMixin, ThemeProvider
     implements IBeerPageWidgetModel {
   BeerPageWidgetModel(
     super.model,
@@ -90,5 +94,15 @@ class BeerPageWidgetModel extends WidgetModel<BeerPageWidget, BeerPageModel>
     pagingController.removePageRequestListener(loadBeer);
     configState.dispose();
     super.dispose();
+  }
+
+  @override
+  void openBeer(Beer item) {
+    router.push(
+      BeerDatilRouteWidget(
+        beerId: item.id,
+        beer: item
+      ),
+    );
   }
 }

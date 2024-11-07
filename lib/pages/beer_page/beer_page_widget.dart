@@ -74,55 +74,61 @@ class BeerPageWidget extends ElementaryWidget<IBeerPageWidgetModel> {
                           borderRadius: const BorderRadius.all(
                             Radius.circular(16),
                           ),
-                          child: Column(
-                            children: [
-                              ListTile(
-                                leading: CircleAvatar(
-                                  child: Text(index.toString()),
-                                ),
-                                title: Text(
-                                  item.name,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                subtitle: Text(
-                                  item.type ?? '',
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              Expanded(
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(16),
-                                  ),
-                                  child: CachedNetworkImage(
-                                    imageUrl: item.photo ?? '',
-                                    fit: BoxFit.cover,
-                                    errorWidget: (_, __, ___) => Image.asset(
-                                      Assets.pivoa[2],
-                                      fit: BoxFit.cover,
+                          child: InkWell(
+                            onTap: () => wm.openBeer(item),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  ListTile(
+                                    leading: CircleAvatar(
+                                      child: Text(index.toString()),
+                                    ),
+                                    title: Text(
+                                      item.name,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                    subtitle: Text(
+                                      item.type ?? '',
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
-                                ),
+                                  Expanded(
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(16),
+                                      ),
+                                      child: CachedNetworkImage(
+                                        imageUrl: item.photo ?? '',
+                                        fit: BoxFit.cover,
+                                        errorWidget: (_, __, ___) => Image.asset(
+                                          Assets.pivoa[2],
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Row(
+                                      children: [
+                                        IconButton.filledTonal(
+                                          visualDensity: VisualDensity.compact,
+                                          onPressed: () {},
+                                          icon: Icon(Icons.favorite),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        FilledButton.tonalIcon(
+                                          onPressed: () {},
+                                          icon: Icon(Icons.comment),
+                                          label: Text('0'),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
                               ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    IconButton.filledTonal(
-                                      visualDensity: VisualDensity.compact,
-                                      onPressed: () {},
-                                      icon: Icon(Icons.favorite),
-                                    ),
-                                    SizedBox(width: 10),
-                                    FilledButton.tonalIcon(
-                                      onPressed: () {},
-                                      icon: Icon(Icons.comment),
-                                      label: Text('0'),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                            ),
                           ),
                         ),
                       );

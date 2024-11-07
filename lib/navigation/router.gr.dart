@@ -66,6 +66,71 @@ class AuthRouteWidgetArgs {
 }
 
 /// generated route for
+/// [BeerDatilPageWidget]
+class BeerDatilRouteWidget extends PageRouteInfo<BeerDatilRouteWidgetArgs> {
+  BeerDatilRouteWidget({
+    Key? key,
+    required int beerId,
+    Beer? beer,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultBeerDatilPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BeerDatilRouteWidget.name,
+          args: BeerDatilRouteWidgetArgs(
+            key: key,
+            beerId: beerId,
+            beer: beer,
+            wmFactory: wmFactory,
+          ),
+          rawPathParams: {'beerId': beerId},
+          initialChildren: children,
+        );
+
+  static const String name = 'BeerDatilRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<BeerDatilRouteWidgetArgs>(
+          orElse: () =>
+              BeerDatilRouteWidgetArgs(beerId: pathParams.getInt('beerId')));
+      return BeerDatilPageWidget(
+        key: args.key,
+        beerId: args.beerId,
+        beer: args.beer,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class BeerDatilRouteWidgetArgs {
+  const BeerDatilRouteWidgetArgs({
+    this.key,
+    required this.beerId,
+    this.beer,
+    this.wmFactory = defaultBeerDatilPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final int beerId;
+
+  final Beer? beer;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'BeerDatilRouteWidgetArgs{key: $key, beerId: $beerId, beer: $beer, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [BeerPageWidget]
 class BeerRouteWidget extends PageRouteInfo<BeerRouteWidgetArgs> {
   BeerRouteWidget({

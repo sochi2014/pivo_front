@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+import 'package:pivo_front/domain/entity/beer.dart';
 import 'package:pivo_front/domain/entity/profile.dart';
 import 'package:pivo_front/pages/pages.dart';
 
@@ -28,6 +29,10 @@ class AppRouter extends RootStackRouter {
                 AutoRoute(
                   page: BeerRouteWidget.page,
                   initial: true,
+                ),
+                AutoRoute(
+                  path: ':beerId',
+                  page: BeerDatilRouteWidget.page,
                 ),
               ],
             ),
