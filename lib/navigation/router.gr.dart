@@ -66,6 +66,71 @@ class AuthRouteWidgetArgs {
 }
 
 /// generated route for
+/// [BeerDatilPageWidget]
+class BeerDatilRouteWidget extends PageRouteInfo<BeerDatilRouteWidgetArgs> {
+  BeerDatilRouteWidget({
+    Key? key,
+    required int beerId,
+    Beer? beer,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultBeerDatilPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          BeerDatilRouteWidget.name,
+          args: BeerDatilRouteWidgetArgs(
+            key: key,
+            beerId: beerId,
+            beer: beer,
+            wmFactory: wmFactory,
+          ),
+          rawPathParams: {'beerId': beerId},
+          initialChildren: children,
+        );
+
+  static const String name = 'BeerDatilRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<BeerDatilRouteWidgetArgs>(
+          orElse: () =>
+              BeerDatilRouteWidgetArgs(beerId: pathParams.getInt('beerId')));
+      return BeerDatilPageWidget(
+        key: args.key,
+        beerId: args.beerId,
+        beer: args.beer,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class BeerDatilRouteWidgetArgs {
+  const BeerDatilRouteWidgetArgs({
+    this.key,
+    required this.beerId,
+    this.beer,
+    this.wmFactory = defaultBeerDatilPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final int beerId;
+
+  final Beer? beer;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'BeerDatilRouteWidgetArgs{key: $key, beerId: $beerId, beer: $beer, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [BeerPageWidget]
 class BeerRouteWidget extends PageRouteInfo<BeerRouteWidgetArgs> {
   BeerRouteWidget({
@@ -194,6 +259,149 @@ class DisableRoute extends PageRouteInfo<void> {
       return const DisablePage();
     },
   );
+}
+
+/// generated route for
+/// [FeedPageWidget]
+class FeedRouteWidget extends PageRouteInfo<FeedRouteWidgetArgs> {
+  FeedRouteWidget({
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultFeedPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FeedRouteWidget.name,
+          args: FeedRouteWidgetArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<FeedRouteWidgetArgs>(
+          orElse: () => const FeedRouteWidgetArgs());
+      return FeedPageWidget(
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class FeedRouteWidgetArgs {
+  const FeedRouteWidgetArgs({
+    this.key,
+    this.wmFactory = defaultFeedPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'FeedRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
+/// [FeedbackPageWidget]
+class FeedbackRouteWidget extends PageRouteInfo<FeedbackRouteWidgetArgs> {
+  FeedbackRouteWidget({
+    Key? key,
+    String typeFeedback = 'beer',
+    Beer? beer,
+    Place? place,
+    int? beerId,
+    int? placeId,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultFeedbackPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FeedbackRouteWidget.name,
+          args: FeedbackRouteWidgetArgs(
+            key: key,
+            typeFeedback: typeFeedback,
+            beer: beer,
+            place: place,
+            beerId: beerId,
+            placeId: placeId,
+            wmFactory: wmFactory,
+          ),
+          rawQueryParams: {
+            'typeFeedback': typeFeedback,
+            'beerId': beerId,
+            'placeId': placeId,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedbackRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final queryParams = data.queryParams;
+      final args = data.argsAs<FeedbackRouteWidgetArgs>(
+          orElse: () => FeedbackRouteWidgetArgs(
+                typeFeedback: queryParams.getString(
+                  'typeFeedback',
+                  'beer',
+                ),
+                beerId: queryParams.optInt('beerId'),
+                placeId: queryParams.optInt('placeId'),
+              ));
+      return FeedbackPageWidget(
+        key: args.key,
+        typeFeedback: args.typeFeedback,
+        beer: args.beer,
+        place: args.place,
+        beerId: args.beerId,
+        placeId: args.placeId,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class FeedbackRouteWidgetArgs {
+  const FeedbackRouteWidgetArgs({
+    this.key,
+    this.typeFeedback = 'beer',
+    this.beer,
+    this.place,
+    this.beerId,
+    this.placeId,
+    this.wmFactory = defaultFeedbackPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final String typeFeedback;
+
+  final Beer? beer;
+
+  final Place? place;
+
+  final int? beerId;
+
+  final int? placeId;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'FeedbackRouteWidgetArgs{key: $key, typeFeedback: $typeFeedback, beer: $beer, place: $place, beerId: $beerId, placeId: $placeId, wmFactory: $wmFactory}';
+  }
 }
 
 /// generated route for

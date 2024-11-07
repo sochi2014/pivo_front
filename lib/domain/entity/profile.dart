@@ -9,6 +9,7 @@ class Profile with _$Profile {
     includeIfNull: false,
   )
   const factory Profile({
+    int? id,
     required String email,
     required String username,
     @JsonKey(name: 'avatar_url') String? avatarUrl,

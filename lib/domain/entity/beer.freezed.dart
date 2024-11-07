@@ -29,7 +29,7 @@ mixin _$Beer {
   @JsonKey(name: 'type_name')
   String? get type => throw _privateConstructorUsedError;
   @JsonKey(name: 'alc_degree')
-  String? get alc => throw _privateConstructorUsedError;
+  double? get alc => throw _privateConstructorUsedError;
   @JsonKey(name: 'color_name')
   String? get color => throw _privateConstructorUsedError;
   @JsonKey(name: 'description')
@@ -39,9 +39,9 @@ mixin _$Beer {
   @JsonKey(name: 'ibu')
   double? get ibu => throw _privateConstructorUsedError;
   @JsonKey(name: 'og')
-  String? get og => throw _privateConstructorUsedError;
+  double? get og => throw _privateConstructorUsedError;
   @JsonKey(name: 'fg')
-  String? get fg => throw _privateConstructorUsedError;
+  double? get fg => throw _privateConstructorUsedError;
   @JsonKey(name: 'barrel_aged')
   bool? get barrel_aged => throw _privateConstructorUsedError;
 
@@ -64,13 +64,13 @@ abstract class $BeerCopyWith<$Res> {
       @JsonKey(name: 'name') String name,
       @JsonKey(name: 'brand') String? brand,
       @JsonKey(name: 'type_name') String? type,
-      @JsonKey(name: 'alc_degree') String? alc,
+      @JsonKey(name: 'alc_degree') double? alc,
       @JsonKey(name: 'color_name') String? color,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'photo') String? photo,
       @JsonKey(name: 'ibu') double? ibu,
-      @JsonKey(name: 'og') String? og,
-      @JsonKey(name: 'fg') String? fg,
+      @JsonKey(name: 'og') double? og,
+      @JsonKey(name: 'fg') double? fg,
       @JsonKey(name: 'barrel_aged') bool? barrel_aged});
 }
 
@@ -122,7 +122,7 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
       alc: freezed == alc
           ? _value.alc
           : alc // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -142,11 +142,11 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
       og: freezed == og
           ? _value.og
           : og // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       fg: freezed == fg
           ? _value.fg
           : fg // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       barrel_aged: freezed == barrel_aged
           ? _value.barrel_aged
           : barrel_aged // ignore: cast_nullable_to_non_nullable
@@ -167,13 +167,13 @@ abstract class _$$BeerImplCopyWith<$Res> implements $BeerCopyWith<$Res> {
       @JsonKey(name: 'name') String name,
       @JsonKey(name: 'brand') String? brand,
       @JsonKey(name: 'type_name') String? type,
-      @JsonKey(name: 'alc_degree') String? alc,
+      @JsonKey(name: 'alc_degree') double? alc,
       @JsonKey(name: 'color_name') String? color,
       @JsonKey(name: 'description') String? description,
       @JsonKey(name: 'photo') String? photo,
       @JsonKey(name: 'ibu') double? ibu,
-      @JsonKey(name: 'og') String? og,
-      @JsonKey(name: 'fg') String? fg,
+      @JsonKey(name: 'og') double? og,
+      @JsonKey(name: 'fg') double? fg,
       @JsonKey(name: 'barrel_aged') bool? barrel_aged});
 }
 
@@ -222,7 +222,7 @@ class __$$BeerImplCopyWithImpl<$Res>
       alc: freezed == alc
           ? _value.alc
           : alc // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       color: freezed == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
@@ -242,11 +242,11 @@ class __$$BeerImplCopyWithImpl<$Res>
       og: freezed == og
           ? _value.og
           : og // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       fg: freezed == fg
           ? _value.fg
           : fg // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as double?,
       barrel_aged: freezed == barrel_aged
           ? _value.barrel_aged
           : barrel_aged // ignore: cast_nullable_to_non_nullable
@@ -290,7 +290,7 @@ class _$BeerImpl implements _Beer {
   final String? type;
   @override
   @JsonKey(name: 'alc_degree')
-  final String? alc;
+  final double? alc;
   @override
   @JsonKey(name: 'color_name')
   final String? color;
@@ -305,10 +305,10 @@ class _$BeerImpl implements _Beer {
   final double? ibu;
   @override
   @JsonKey(name: 'og')
-  final String? og;
+  final double? og;
   @override
   @JsonKey(name: 'fg')
-  final String? fg;
+  final double? fg;
   @override
   @JsonKey(name: 'barrel_aged')
   final bool? barrel_aged;
@@ -366,13 +366,13 @@ abstract class _Beer implements Beer {
       @JsonKey(name: 'name') required final String name,
       @JsonKey(name: 'brand') final String? brand,
       @JsonKey(name: 'type_name') final String? type,
-      @JsonKey(name: 'alc_degree') final String? alc,
+      @JsonKey(name: 'alc_degree') final double? alc,
       @JsonKey(name: 'color_name') final String? color,
       @JsonKey(name: 'description') final String? description,
       @JsonKey(name: 'photo') final String? photo,
       @JsonKey(name: 'ibu') final double? ibu,
-      @JsonKey(name: 'og') final String? og,
-      @JsonKey(name: 'fg') final String? fg,
+      @JsonKey(name: 'og') final double? og,
+      @JsonKey(name: 'fg') final double? fg,
       @JsonKey(name: 'barrel_aged') final bool? barrel_aged}) = _$BeerImpl;
 
   factory _Beer.fromJson(Map<String, dynamic> json) = _$BeerImpl.fromJson;
@@ -391,7 +391,7 @@ abstract class _Beer implements Beer {
   String? get type;
   @override
   @JsonKey(name: 'alc_degree')
-  String? get alc;
+  double? get alc;
   @override
   @JsonKey(name: 'color_name')
   String? get color;
@@ -406,10 +406,10 @@ abstract class _Beer implements Beer {
   double? get ibu;
   @override
   @JsonKey(name: 'og')
-  String? get og;
+  double? get og;
   @override
   @JsonKey(name: 'fg')
-  String? get fg;
+  double? get fg;
   @override
   @JsonKey(name: 'barrel_aged')
   bool? get barrel_aged;

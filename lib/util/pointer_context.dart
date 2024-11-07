@@ -12,7 +12,7 @@ class PointerContext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
+    if (kIsWeb || kIsWasm) {
       return PointerInterceptor(
         child: child,
       );

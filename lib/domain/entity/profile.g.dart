@@ -8,16 +8,14 @@ part of 'profile.dart';
 
 _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
     _$ProfileImpl(
+      id: (json['id'] as num?)?.toInt(),
       email: json['email'] as String,
       username: json['username'] as String,
       avatarUrl: json['avatar_url'] as String?,
     );
 
 Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) {
-  final val = <String, dynamic>{
-    'email': instance.email,
-    'username': instance.username,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -25,6 +23,9 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) {
     }
   }
 
+  writeNotNull('id', instance.id);
+  val['email'] = instance.email;
+  val['username'] = instance.username;
   writeNotNull('avatar_url', instance.avatarUrl);
   return val;
 }

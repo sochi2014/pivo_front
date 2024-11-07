@@ -13,13 +13,13 @@ class Beer with _$Beer {
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'brand') String? brand,
     @JsonKey(name: 'type_name') String? type,
-    @JsonKey(name: 'alc_degree') String? alc,
+    @JsonKey(name: 'alc_degree') double? alc,
     @JsonKey(name: 'color_name') String? color,
     @JsonKey(name: 'description') String? description,
     @JsonKey(name: 'photo') String? photo,
     @JsonKey(name: 'ibu') double? ibu,
-    @JsonKey(name: 'og') String? og,
-    @JsonKey(name: 'fg') String? fg,
+    @JsonKey(name: 'og') double? og,
+    @JsonKey(name: 'fg') double? fg,
     @JsonKey(name: 'barrel_aged') bool? barrel_aged,
   }) = _Beer;
 

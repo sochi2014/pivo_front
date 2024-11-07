@@ -11,13 +11,13 @@ _$BeerImpl _$$BeerImplFromJson(Map<String, dynamic> json) => _$BeerImpl(
       name: json['name'] as String,
       brand: json['brand'] as String?,
       type: json['type_name'] as String?,
-      alc: json['alc_degree'] as String?,
+      alc: (json['alc_degree'] as num?)?.toDouble(),
       color: json['color_name'] as String?,
       description: json['description'] as String?,
       photo: json['photo'] as String?,
       ibu: (json['ibu'] as num?)?.toDouble(),
-      og: json['og'] as String?,
-      fg: json['fg'] as String?,
+      og: (json['og'] as num?)?.toDouble(),
+      fg: (json['fg'] as num?)?.toDouble(),
       barrel_aged: json['barrel_aged'] as bool?,
     );
 

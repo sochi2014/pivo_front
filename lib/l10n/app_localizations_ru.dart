@@ -76,5 +76,26 @@ class AppLocalizationsRu extends AppLocalizations {
   String get register => 'Зарегистрироваться';
 
   @override
+  String get feedbackBeerTitle => 'Отзыв на пиво';
+
+  @override
+  String get feedbackPlaceTitle => 'Отзыв на бар';
+
+  @override
+  String get feedbackFeelings => 'Опишите свои впечатления:';
+
+  @override
+  String get feedbackRateBeer => 'Оцените пиво:';
+
+  @override
+  String get feedbackRatePlace => 'Оцените бар:';
+
+  @override
+  String get feedbackSharePhotos => 'Поделитесь фото:';
+
+  @override
+  String get send => 'Отправить';
+
+  @override
   String get verificationTitle => 'Давайте убедимся, что вы достигли законного возраста употребления алкоголя в вашей стране.';
 }

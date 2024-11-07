@@ -44,7 +44,7 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
                   Positioned(
                     right: 0,
                     left: 0,
-                    bottom: 0,
+                    bottom: 75,
                     child: PointerContext(
                       child: ConstrainedBox(
                         constraints: const BoxConstraints(
@@ -102,7 +102,8 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
   }
 
   Widget _buildMap(List<Place> state, ValueChanged<Place> onTap) {
-    if (defaultTargetPlatform == TargetPlatform.iOS ||
+    if (!kIsWeb && !kIsWasm ||
+        defaultTargetPlatform == TargetPlatform.iOS ||
         defaultTargetPlatform == TargetPlatform.android) {
       return MobileMap(
         key: mapKey,

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'beer_service.dart';
+part of 'feedback_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'beer_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
-class _BeerService implements BeerService {
-  _BeerService(
+class _FeedbackService implements FeedbackService {
+  _FeedbackService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
@@ -22,20 +22,25 @@ class _BeerService implements BeerService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Beer>> getBeer(BeerConfig beer) async {
+  Future<List<Feedback>> getFeedback({
+    int offset = 0,
+    int limit = 10,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    queryParameters.addAll(beer.toJson());
+    final queryParameters = <String, dynamic>{
+      r'offset': offset,
+      r'limit': limit,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<Beer>>(Options(
+    final _options = _setStreamType<List<Feedback>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/api/v1/beer_routes',
+          '/api/v1/feedback_routes/',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -45,10 +50,10 @@ class _BeerService implements BeerService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<Beer> _value;
+    late List<Feedback> _value;
     try {
       _value = _result.data!
-          .map((dynamic i) => Beer.fromJson(i as Map<String, dynamic>))
+          .map((dynamic i) => Feedback.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -58,19 +63,19 @@ class _BeerService implements BeerService {
   }
 
   @override
-  Future<Beer> getBeerById(int id) async {
+  Future<Feedback> postFeedback({required FeedbackCreate feedback}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<Beer>(Options(
-      method: 'GET',
+    final _data = feedback;
+    final _options = _setStreamType<Feedback>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/api/v1/beer_routes/${id}',
+          '/api/v1/feedback_routes/create',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -80,9 +85,9 @@ class _BeerService implements BeerService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late Beer _value;
+    late Feedback _value;
     try {
-      _value = Beer.fromJson(_result.data!);
+      _value = Feedback.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
