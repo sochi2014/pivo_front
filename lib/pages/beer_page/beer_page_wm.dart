@@ -59,23 +59,23 @@ class BeerPageWidgetModel extends WidgetModel<BeerPageWidget, BeerPageModel>
   }
 
   Future<void> loadBeer(int pageKey) async {
-    List<Beer> beerList = await beerService.getBeer(
-      configState.value.copyWith(
-        offset: pageKey * 10,
-        limit: 10,
-      ),
-    );
+    try {
+      List<Beer> beerList = await beerService.getBeer(
+        configState.value.copyWith(
+          offset: pageKey * 10,
+          limit: 10,
+        ),
+      );
 
-    if (pageKey == 0 && widget.topMode && beerList.length > 3) {
-      final [first, second, third] = beerList.sublist(0, 3);
-      beerTopState.value = (first, second, third);
-      beerList = beerList.sublist(3);
-    }
+      if (pageKey == 0 && widget.topMode && beerList.length > 3) {
+        final [first, second, third] = beerList.sublist(0, 3);
+        beerTopState.value = (first, second, third);
+        beerList = beerList.sublist(3);
+      }
 
-    if (beerList.isEmpty) {
-      pagingController.appendLastPage(beerList);
-    } else {
       pagingController.appendPage(beerList, ++pageKey);
+    } on Object {
+      pagingController.appendLastPage([]);
     }
   }
 

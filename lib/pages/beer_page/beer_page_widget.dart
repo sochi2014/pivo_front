@@ -90,7 +90,6 @@ class BeerPageWidget extends ElementaryWidget<IBeerPageWidgetModel> {
                                 ),
                               ),
                               Expanded(
-                                flex: 10,
                                 child: ClipRRect(
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(16),
@@ -110,6 +109,7 @@ class BeerPageWidget extends ElementaryWidget<IBeerPageWidgetModel> {
                                 child: Row(
                                   children: [
                                     IconButton.filledTonal(
+                                      visualDensity: VisualDensity.compact,
                                       onPressed: () {},
                                       icon: Icon(Icons.favorite),
                                     ),

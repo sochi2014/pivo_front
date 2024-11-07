@@ -12,7 +12,7 @@ abstract class FeedbackService {
 
 
    @GET(FeedbackUrl.feedback)
-   Future<List<Feedback>> getPlaces({
+   Future<List<Feedback>> getFeedback({
       @Query('offset') int offset = 0,
       @Query('limit') int limit = 10,
    });

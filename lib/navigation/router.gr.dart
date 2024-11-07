@@ -197,6 +197,56 @@ class DisableRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [FeedPageWidget]
+class FeedRouteWidget extends PageRouteInfo<FeedRouteWidgetArgs> {
+  FeedRouteWidget({
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultFeedPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FeedRouteWidget.name,
+          args: FeedRouteWidgetArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<FeedRouteWidgetArgs>(
+          orElse: () => const FeedRouteWidgetArgs());
+      return FeedPageWidget(
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class FeedRouteWidgetArgs {
+  const FeedRouteWidgetArgs({
+    this.key,
+    this.wmFactory = defaultFeedPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'FeedRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})

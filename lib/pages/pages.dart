@@ -5,6 +5,8 @@ export 'beer_page/beer_page_wm.dart';
 export 'choose_city_page/choose_city_page_widget.dart';
 export 'choose_city_page/choose_city_page_wm.dart';
 export 'disable_page/disable_page.dart';
+export 'feed_page/feed_page_widget.dart';
+export 'feed_page/feed_page_wm.dart';
 export 'home_page/home_page.dart';
 export 'map_page/map_page_widget.dart';
 export 'map_page/map_page_wm.dart';

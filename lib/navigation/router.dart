@@ -16,7 +16,10 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: FeedTab.page,
               children: [
-                AutoRoute(page: DisableRoute.page),
+                AutoRoute(
+                  page: FeedRouteWidget.page,
+                  initial: true,
+                ),
               ],
             ),
             AutoRoute(

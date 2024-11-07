@@ -22,7 +22,7 @@ class _FeedbackService implements FeedbackService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<List<Feedback>> getPlaces({
+  Future<List<Feedback>> getFeedback({
     int offset = 0,
     int limit = 10,
   }) async {
@@ -40,7 +40,7 @@ class _FeedbackService implements FeedbackService {
     )
         .compose(
           _dio.options,
-          '/api/v1/place_routes/',
+          '/api/v1/feedback_routes/',
           queryParameters: queryParameters,
           data: _data,
         )
