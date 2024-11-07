@@ -8,4 +8,6 @@ final class Assets {
     'assets/pivoa2.webp',
     'assets/pivoa3.webp',
   ];
+
+  static const beerIcon = 'assets/beer_icon.png';
 }

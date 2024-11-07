@@ -26,8 +26,8 @@ class BeerPageWidget extends ElementaryWidget<IBeerPageWidgetModel> {
 
     if (!topMode && wm.desktop) {
       delegate = const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 150,
-        childAspectRatio: 2 / 3,
+        maxCrossAxisExtent: 300,
+        childAspectRatio: 4 / 5,
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
       );
@@ -36,7 +36,7 @@ class BeerPageWidget extends ElementaryWidget<IBeerPageWidgetModel> {
     if (!topMode && wm.tablet) {
       delegate = const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 2 / 3,
+        childAspectRatio: 4 / 5,
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
       );
@@ -44,41 +44,95 @@ class BeerPageWidget extends ElementaryWidget<IBeerPageWidgetModel> {
 
     delegate ??= const SliverGridDelegateWithFixedCrossAxisCount(
       crossAxisCount: 1,
-      childAspectRatio: 2 / 3,
+      childAspectRatio: 4 / 5,
       mainAxisSpacing: 16,
       crossAxisSpacing: 16,
     );
 
-    return CustomScrollView(
-      slivers: [
-        PagedSliverGrid<int, Beer>(
-          pagingController: wm.pagingController,
-          gridDelegate: delegate,
-          builderDelegate: PagedChildBuilderDelegate<Beer>(
-              itemBuilder: (context, item, index) {
-            return Card(
-              clipBehavior: Clip.hardEdge,
-              margin: EdgeInsets.zero,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      CachedNetworkImage(
-                        imageUrl: item.photo ?? '',
-                        errorWidget: (_, __, ___) =>
-                            Image.asset(Assets.pivoa[2]),
-                      ),
-                      Text(item.name),
-                    ],
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxWidth: 600,
+        ),
+        child: RefreshIndicator(
+          onRefresh: wm.refresh,
+          child: CustomScrollView(
+            slivers: [
+              SliverPadding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 4,
+                ),
+                sliver: PagedSliverGrid<int, Beer>(
+                  pagingController: wm.pagingController,
+                  gridDelegate: delegate,
+                  builderDelegate: PagedChildBuilderDelegate<Beer>(
+                    itemBuilder: (context, item, index) {
+                      return Card(
+                        clipBehavior: Clip.hardEdge,
+                        margin: EdgeInsets.zero,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(16),
+                          ),
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading: CircleAvatar(
+                                  child: Text(index.toString()),
+                                ),
+                                title: Text(
+                                  item.name,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                subtitle: Text(
+                                  item.type ?? '',
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 10,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(16),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: item.photo ?? '',
+                                    fit: BoxFit.cover,
+                                    errorWidget: (_, __, ___) => Image.asset(
+                                      Assets.pivoa[2],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    IconButton.filledTonal(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.favorite),
+                                    ),
+                                    SizedBox(width: 10),
+                                    FilledButton.tonalIcon(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.comment),
+                                      label: Text('0'),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
-            );
-          }),
+            ],
+          ),
         ),
-      ],
+      ),
     );
   }
 }

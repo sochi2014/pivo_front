@@ -18,6 +18,8 @@ abstract interface class IBeerPageWidgetModel
   ValueListenable<(Beer, Beer, Beer)?> get beerTopState;
 
   ValueListenable<BeerConfig> get configState;
+
+  Future<void> refresh();
 }
 
 BeerPageWidgetModel defaultBeerPageWidgetModelFactory(BuildContext context) {
@@ -50,6 +52,11 @@ class BeerPageWidgetModel extends WidgetModel<BeerPageWidget, BeerPageModel>
   @override
   // TODO: implement beerTopState
   final ValueNotifier<(Beer, Beer, Beer)?> beerTopState = ValueNotifier(null);
+
+  @override
+  Future<void> refresh() async {
+    pagingController.refresh();
+  }
 
   Future<void> loadBeer(int pageKey) async {
     List<Beer> beerList = await beerService.getBeer(

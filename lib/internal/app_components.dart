@@ -8,6 +8,7 @@ import 'package:pivo_front/data/repository/geolocation_repository.dart';
 import 'package:pivo_front/data/repository/token_ropository.dart';
 import 'package:pivo_front/data/service/auth_service.dart';
 import 'package:pivo_front/data/service/beer_service.dart';
+import 'package:pivo_front/data/service/place_service.dart';
 import 'package:pivo_front/domain/use_case/profile_use_case.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -25,15 +26,7 @@ class AppComponents {
 
   late final AuthService authService = AuthService(dio);
   late final BeerService beerService = BeerService(dio);
-
-  // late final BannerService bannerService = BannerService(dio);
-  // late final GeozonesService geozonesService = GeozonesService(dio);
-  // late final HotelService hotelService = HotelService(dio);
-  // late final DescriptionService descriptionService = DescriptionService(dio);
-  // late final TargetAudienceService targetAudienceService = TargetAudienceService(
-  //     dio);
-  // late final CategoryService categoryService = CategoryService(dio);
-  // late final audienceService = TargetAudienceService(dio);
+  late final PlaceService placeService = PlaceService(dio);
 
   final List<String> textCharacteristic = <String>[
     'art',
