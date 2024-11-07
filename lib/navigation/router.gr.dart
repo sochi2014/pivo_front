@@ -312,6 +312,99 @@ class FeedRouteWidgetArgs {
 }
 
 /// generated route for
+/// [FeedbackPageWidget]
+class FeedbackRouteWidget extends PageRouteInfo<FeedbackRouteWidgetArgs> {
+  FeedbackRouteWidget({
+    Key? key,
+    String typeFeedback = 'beer',
+    Beer? beer,
+    Place? place,
+    int? beerId,
+    int? placeId,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultFeedbackPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          FeedbackRouteWidget.name,
+          args: FeedbackRouteWidgetArgs(
+            key: key,
+            typeFeedback: typeFeedback,
+            beer: beer,
+            place: place,
+            beerId: beerId,
+            placeId: placeId,
+            wmFactory: wmFactory,
+          ),
+          rawQueryParams: {
+            'typeFeedback': typeFeedback,
+            'beerId': beerId,
+            'placeId': placeId,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedbackRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final queryParams = data.queryParams;
+      final args = data.argsAs<FeedbackRouteWidgetArgs>(
+          orElse: () => FeedbackRouteWidgetArgs(
+                typeFeedback: queryParams.getString(
+                  'typeFeedback',
+                  'beer',
+                ),
+                beerId: queryParams.optInt('beerId'),
+                placeId: queryParams.optInt('placeId'),
+              ));
+      return FeedbackPageWidget(
+        key: args.key,
+        typeFeedback: args.typeFeedback,
+        beer: args.beer,
+        place: args.place,
+        beerId: args.beerId,
+        placeId: args.placeId,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class FeedbackRouteWidgetArgs {
+  const FeedbackRouteWidgetArgs({
+    this.key,
+    this.typeFeedback = 'beer',
+    this.beer,
+    this.place,
+    this.beerId,
+    this.placeId,
+    this.wmFactory = defaultFeedbackPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final String typeFeedback;
+
+  final Beer? beer;
+
+  final Place? place;
+
+  final int? beerId;
+
+  final int? placeId;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'FeedbackRouteWidgetArgs{key: $key, typeFeedback: $typeFeedback, beer: $beer, place: $place, beerId: $beerId, placeId: $placeId, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})

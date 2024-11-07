@@ -86,15 +86,26 @@ class BeerDatilPageWidget extends ElementaryWidget<IBeerDatilPageWidgetModel> {
                   Text(description ?? ''),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-
-                    ],
+                    children: [],
                   ),
                 ],
               ),
             );
           },
         ),
+      ),
+      floatingActionButton: ValueListenableBuilder(
+        valueListenable: wm.beerState,
+        builder: (context, beer, index) {
+          if (beer == null) {
+            return const SizedBox.shrink();
+          }
+
+          return FloatingActionButton(
+            onPressed: () => wm.openReview(beer),
+            child: const Icon(Icons.reviews_outlined),
+          );
+        },
       ),
     );
   }

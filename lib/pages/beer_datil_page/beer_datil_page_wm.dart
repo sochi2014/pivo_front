@@ -3,15 +3,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pivo_front/data/service/beer_service.dart';
 import 'package:pivo_front/domain/entity/beer.dart';
+import 'package:pivo_front/domain/entity/feedback.dart';
 import 'package:pivo_front/internal/app_components.dart';
+import 'package:pivo_front/navigation/router.dart';
 import 'package:pivo_front/util/responsive_widget.dart';
 import 'package:pivo_front/util/theme_provider.dart';
 
 import 'beer_datil_page_model.dart';
 import 'beer_datil_page_widget.dart';
 
-abstract interface class IBeerDatilPageWidgetModel implements IWidgetModel, IResponsive, IThemeProvider {
+abstract interface class IBeerDatilPageWidgetModel
+    implements IWidgetModel, IResponsive, IThemeProvider {
   ValueListenable<Beer?> get beerState;
+
+  void openReview(Beer beer);
 }
 
 BeerDatilPageWidgetModel defaultBeerDatilPageWidgetModelFactory(
@@ -59,5 +64,16 @@ class BeerDatilPageWidgetModel
   void dispose() {
     beerState.dispose();
     super.dispose();
+  }
+
+  @override
+  void openReview(Beer beer) {
+    router.push(
+      FeedbackRouteWidget(
+        typeFeedback: TypeFeedback.beer.name,
+        beerId: beer.id,
+        beer: beer,
+      ),
+    );
   }
 }
