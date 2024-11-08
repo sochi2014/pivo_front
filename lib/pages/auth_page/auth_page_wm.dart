@@ -1,6 +1,9 @@
+import 'package:aws_s3_api/s3-2006-03-01.dart';
 import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:pivo_front/data/dto/auth_email_part1_request.dart';
 import 'package:pivo_front/data/dto/auth_email_part2_request.dart';
 import 'package:pivo_front/data/service/auth_service.dart';
@@ -10,6 +13,7 @@ import 'package:pivo_front/internal/app_components.dart';
 import 'package:pivo_front/util/snackbar_error_handler.dart';
 import 'package:pivo_front/util/theme_provider.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:uuid/uuid.dart';
 
 import 'auth_page_model.dart';
 import 'auth_page_widget.dart';
@@ -38,12 +42,19 @@ abstract class IAuthPageWidgetModel implements IWidgetModel, IThemeProvider {
   Future<void> confirmCode();
 
   BehaviorSubject<AuthState> get authStateController;
+
+  TextEditingController get phoneController;
+
+  ValueListenable<String?> get avatarState;
+
+  void addPhoto();
 }
 
 AuthPageWidgetModel defaultAuthPageWidgetModelFactory(BuildContext context) {
   return AuthPageWidgetModel(
     AuthPageModel(),
     AppComponents().profileUseCase,
+    AppComponents().storageService,
   );
 }
 
@@ -51,6 +62,8 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
     with ThemeProvider, SnackBarErrorHandlerMixin
     implements IAuthPageWidgetModel {
   final ProfileUseCase profileUseCase;
+
+  final S3 storage;
   @override
   final authStateController = BehaviorSubject.seeded(AuthState.phone);
 
@@ -60,15 +73,43 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
   final usernameController = TextEditingController();
 
   @override
+  final phoneController = TextEditingController();
+
+  @override
   AuthService authService = AppComponents().authService;
 
   @override
   TextEditingController codeController = TextEditingController();
 
+  @override
+  final ValueNotifier<String?> avatarState = ValueNotifier<String?>(null);
+
   AuthPageWidgetModel(
     AuthPageModel model,
     this.profileUseCase,
+    this.storage,
   ) : super(model);
+
+  @override
+  Future<void> addPhoto() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image == null) {
+      throw Exception('Cant load image');
+    }
+
+    final name = const Uuid().v4();
+    final img = await storage.putObject(
+      bucket: '46b23c3b-b1733b4c-cbff-4e75-8598-173b53072d61',
+      key: name,
+      body: await image.openRead().reduce((prev, ell) => prev..addAll(ell)),
+    );
+
+    final url =
+        'https://s3.timeweb.cloud/46b23c3b-b1733b4c-cbff-4e75-8598-173b53072d61/$name';
+    avatarState.value = url;
+  }
 
   @override
   Future<void> onSendCode() async {
@@ -134,7 +175,9 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
 
   @override
   void dispose() {
+    avatarState.dispose();
     emailController.dispose();
+    phoneController.dispose();
     usernameController.dispose();
     codeController.dispose();
     authStateController.close();
@@ -155,12 +198,20 @@ class AuthPageWidgetModel extends WidgetModel<AuthPageWidget, AuthPageModel>
       return;
     }
 
+    final phone = phoneController.text;
+    if (username.isEmpty) {
+      onErrorHandle(localizations.emptyUsername);
+      return;
+    }
+
     authStateController.add(AuthState.loadingRegister);
     try {
       await authService.register(
         profile: Profile(
           email: email,
           username: username,
+          phoneNumber: phone,
+          avatarUrl: avatarState.value,
         ),
       );
       authStateController.add(AuthState.code);

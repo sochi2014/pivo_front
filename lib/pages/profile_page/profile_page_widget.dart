@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:pivo_front/pages/pages.dart';
+import 'package:pivo_front/uikit/avatar.dart';
 
 // TODO: cover with documentation
 /// Main widget for ProfilePage module
@@ -17,11 +18,9 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
     return ValueListenableBuilder(
       valueListenable: wm.authState,
       builder: (context, auth, _) {
-
-        if(!auth){
+        if (!auth) {
           return const PromoPage();
         }
-
 
         return StreamBuilder(
           initialData: wm.profileStream.valueOrNull,
@@ -37,12 +36,13 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
 
             return ListView(
               children: [
-                CircleAvatar(
-                  radius: 150,
-                  backgroundImage: NetworkImage(
-                    data.avatarUrl ?? '',
-                  ),
-                  onBackgroundImageError: (_, __) => Icon(Icons.man),
+                SizedBox(
+                  height: 300,
+                  child: Avatar(data: data),
+                ),
+                Text(
+                  data.level?.levelName ?? '',
+                  textAlign: TextAlign.center,
                 ),
                 ListTile(
                   title: Text(data.username),
@@ -75,7 +75,7 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
             );
           },
         );
-      }
+      },
     );
   }
 }
