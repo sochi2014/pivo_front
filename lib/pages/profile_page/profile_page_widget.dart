@@ -14,55 +14,68 @@ class ProfilePageWidget extends ElementaryWidget<IProfilePageWidgetModel> {
 
   @override
   Widget build(IProfilePageWidgetModel wm) {
-    return StreamBuilder(
-      initialData: wm.profileStream.valueOrNull,
-      stream: wm.profileStream.stream,
-      builder: (context, snapshot) {
-        final data = snapshot.data;
+    return ValueListenableBuilder(
+      valueListenable: wm.authState,
+      builder: (context, auth, _) {
 
-        if (data == null) {
+        if(!auth){
           return const PromoPage();
         }
 
-        return ListView(
-          children: [
-            CircleAvatar(
-              radius: 150,
-              backgroundImage: NetworkImage(
-                data.avatarUrl ?? '',
-              ),
-              onBackgroundImageError: (_, __) => Icon(Icons.man),
-            ),
-            ListTile(
-              title: Text(data.username),
-              subtitle: Text(data.email),
-            ),
-            SizedBox(height: 16),
-            Divider(indent: 16, endIndent: 16),
-            SizedBox(height: 16),
-            ListTile(
-              leading: Icon(Icons.favorite_outline),
-              title: Text('Избранное'),
-            ),
-            Divider(indent: 16, endIndent: 16),
-            ListTile(
-              leading: Icon(Icons.reviews),
-              title: Text('Мои отзывы'),
-            ),
-            Divider(indent: 16, endIndent: 16),
-            ListTile(
-              leading: Icon(Icons.place),
-              title: Text('Мои места'),
-            ),
-            Divider(indent: 16, endIndent: 16),
-            ListTile(
-              leading: Icon(Icons.people),
-              title: Text('Друзья'),
-            ),
-            Divider(indent: 16, endIndent: 16),
-          ],
+
+        return StreamBuilder(
+          initialData: wm.profileStream.valueOrNull,
+          stream: wm.profileStream.stream,
+          builder: (context, snapshot) {
+            final data = snapshot.data;
+
+            if (data == null) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+
+            return ListView(
+              children: [
+                CircleAvatar(
+                  radius: 150,
+                  backgroundImage: NetworkImage(
+                    data.avatarUrl ?? '',
+                  ),
+                  onBackgroundImageError: (_, __) => Icon(Icons.man),
+                ),
+                ListTile(
+                  title: Text(data.username),
+                  subtitle: Text(data.email),
+                ),
+                SizedBox(height: 16),
+                Divider(indent: 16, endIndent: 16),
+                SizedBox(height: 16),
+                ListTile(
+                  leading: Icon(Icons.favorite_outline),
+                  title: Text('Избранное'),
+                ),
+                Divider(indent: 16, endIndent: 16),
+                ListTile(
+                  leading: Icon(Icons.reviews),
+                  title: Text('Мои отзывы'),
+                ),
+                Divider(indent: 16, endIndent: 16),
+                ListTile(
+                  leading: Icon(Icons.place),
+                  title: Text('Мои места'),
+                ),
+                Divider(indent: 16, endIndent: 16),
+                ListTile(
+                  leading: Icon(Icons.people),
+                  title: Text('Друзья'),
+                ),
+                Divider(indent: 16, endIndent: 16),
+              ],
+            );
+          },
         );
-      },
+      }
     );
   }
 }

@@ -10,6 +10,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get title => 'Beer Harmony';
 
   @override
+  String get underaged => 'You haven\'t reached the age to drink beer.';
+
+  @override
   String get birthdayLabel => 'Birthday';
 
   @override

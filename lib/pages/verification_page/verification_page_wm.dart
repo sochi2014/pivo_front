@@ -3,9 +3,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:pivo_front/domain/entity/country.dart';
-import 'package:pivo_front/navigation/router.dart';
 import 'package:pivo_front/util/responsive_widget.dart';
+import 'package:pivo_front/util/snackbar_error_handler.dart';
 import 'package:pivo_front/util/theme_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'verification_page_model.dart';
 import 'verification_page_widget.dart';
@@ -35,7 +36,7 @@ VerificationPageWidgetModel defaultVerificationPageWidgetModelFactory(
 /// Default widget model for VerificationPageWidget
 class VerificationPageWidgetModel
     extends WidgetModel<VerificationPageWidget, VerificationPageModel>
-    with ThemeProvider, ResponsiveWidgetModelMixin
+    with ThemeProvider, ResponsiveWidgetModelMixin, SnackBarErrorHandlerMixin
     implements IVerificationPageWidgetModel {
   final _format = DateFormat.yMd();
 
@@ -88,11 +89,14 @@ class VerificationPageWidgetModel
     }
 
     bool isCorrectAge = model.checkAge(date, country);
+
+
     if (isCorrectAge) {
-      router.navigate(const HomeRoute());
-    } else {
-      router.push(const DisableRoute());
+      final preferences = SharedPreferencesAsync();
+      preferences.setBool('verificated', isCorrectAge);
+      widget.onResult(isCorrectAge);
+    }else{
+      onErrorHandle(localizations.underaged);
     }
   }
-
 }
