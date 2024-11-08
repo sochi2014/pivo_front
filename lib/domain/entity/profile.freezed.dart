@@ -25,6 +25,9 @@ mixin _$Profile {
   String get username => throw _privateConstructorUsedError;
   @JsonKey(name: 'avatar_url')
   String? get avatarUrl => throw _privateConstructorUsedError;
+  @JsonKey(name: 'phone_number')
+  String? get phoneNumber => throw _privateConstructorUsedError;
+  Level? get level => throw _privateConstructorUsedError;
 
   /// Serializes this Profile to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +47,11 @@ abstract class $ProfileCopyWith<$Res> {
       {int? id,
       String email,
       String username,
-      @JsonKey(name: 'avatar_url') String? avatarUrl});
+      @JsonKey(name: 'avatar_url') String? avatarUrl,
+      @JsonKey(name: 'phone_number') String? phoneNumber,
+      Level? level});
+
+  $LevelCopyWith<$Res>? get level;
 }
 
 /// @nodoc
@@ -66,6 +73,8 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? email = null,
     Object? username = null,
     Object? avatarUrl = freezed,
+    Object? phoneNumber = freezed,
+    Object? level = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -84,7 +93,29 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      level: freezed == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as Level?,
     ) as $Val);
+  }
+
+  /// Create a copy of Profile
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LevelCopyWith<$Res>? get level {
+    if (_value.level == null) {
+      return null;
+    }
+
+    return $LevelCopyWith<$Res>(_value.level!, (value) {
+      return _then(_value.copyWith(level: value) as $Val);
+    });
   }
 }
 
@@ -99,7 +130,12 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       {int? id,
       String email,
       String username,
-      @JsonKey(name: 'avatar_url') String? avatarUrl});
+      @JsonKey(name: 'avatar_url') String? avatarUrl,
+      @JsonKey(name: 'phone_number') String? phoneNumber,
+      Level? level});
+
+  @override
+  $LevelCopyWith<$Res>? get level;
 }
 
 /// @nodoc
@@ -119,6 +155,8 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? email = null,
     Object? username = null,
     Object? avatarUrl = freezed,
+    Object? phoneNumber = freezed,
+    Object? level = freezed,
   }) {
     return _then(_$ProfileImpl(
       id: freezed == id
@@ -137,6 +175,14 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.avatarUrl
           : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      phoneNumber: freezed == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      level: freezed == level
+          ? _value.level
+          : level // ignore: cast_nullable_to_non_nullable
+              as Level?,
     ));
   }
 }
@@ -149,7 +195,9 @@ class _$ProfileImpl implements _Profile {
       {this.id,
       required this.email,
       required this.username,
-      @JsonKey(name: 'avatar_url') this.avatarUrl});
+      @JsonKey(name: 'avatar_url') this.avatarUrl,
+      @JsonKey(name: 'phone_number') this.phoneNumber,
+      this.level});
 
   factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileImplFromJson(json);
@@ -163,10 +211,15 @@ class _$ProfileImpl implements _Profile {
   @override
   @JsonKey(name: 'avatar_url')
   final String? avatarUrl;
+  @override
+  @JsonKey(name: 'phone_number')
+  final String? phoneNumber;
+  @override
+  final Level? level;
 
   @override
   String toString() {
-    return 'Profile(id: $id, email: $email, username: $username, avatarUrl: $avatarUrl)';
+    return 'Profile(id: $id, email: $email, username: $username, avatarUrl: $avatarUrl, phoneNumber: $phoneNumber, level: $level)';
   }
 
   @override
@@ -179,12 +232,16 @@ class _$ProfileImpl implements _Profile {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.avatarUrl, avatarUrl) ||
-                other.avatarUrl == avatarUrl));
+                other.avatarUrl == avatarUrl) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.level, level) || other.level == level));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, username, avatarUrl);
+  int get hashCode => Object.hash(
+      runtimeType, id, email, username, avatarUrl, phoneNumber, level);
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.
@@ -207,7 +264,9 @@ abstract class _Profile implements Profile {
       {final int? id,
       required final String email,
       required final String username,
-      @JsonKey(name: 'avatar_url') final String? avatarUrl}) = _$ProfileImpl;
+      @JsonKey(name: 'avatar_url') final String? avatarUrl,
+      @JsonKey(name: 'phone_number') final String? phoneNumber,
+      final Level? level}) = _$ProfileImpl;
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 
@@ -220,6 +279,11 @@ abstract class _Profile implements Profile {
   @override
   @JsonKey(name: 'avatar_url')
   String? get avatarUrl;
+  @override
+  @JsonKey(name: 'phone_number')
+  String? get phoneNumber;
+  @override
+  Level? get level;
 
   /// Create a copy of Profile
   /// with the given fields replaced by the non-null parameter values.

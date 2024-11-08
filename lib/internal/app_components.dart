@@ -1,5 +1,7 @@
 import 'dart:io';
 
+
+import 'package:aws_s3_api/s3-2006-03-01.dart';
 import 'package:dadata_suggestions/dadata_suggestions.dart';
 import 'package:dio/dio.dart';
 import 'package:pivo_front/data/interseptor.dart';
@@ -30,6 +32,15 @@ class AppComponents {
   late final PlaceService placeService = PlaceService(dio);
   late final FeedbackService feedbackService = FeedbackService(dio);
 
+  final storageService = S3(
+    endpointUrl: 'https://s3.timeweb.cloud',
+    credentials: AwsClientCredentials(
+      accessKey: 'YN1NSGGU2FLQI1ABLOU3',
+      secretKey: 'V8vio7OQzoqm7TvDAxNPYwBYkWwHrLguJW6LIBrA',
+    ),
+    region: 'ru-1',
+  );
+
   final List<String> textCharacteristic = <String>[
     'art',
     'laconic',
@@ -41,12 +52,12 @@ class AppComponents {
   final GeolocationRepository geolocationRepository = GeolocationRepository();
 
   late final GeolocationDadataRepository dadataRepository =
-      GeolocationDadataRepository(
+  GeolocationDadataRepository(
     DadataSuggestions(tokenDaData),
   );
 
   late final ProfileUseCase profileUseCase =
-      ProfileUseCase(tokenRepository, authService);
+  ProfileUseCase(tokenRepository, authService);
 
   Future<void> init() async {
     dio.options

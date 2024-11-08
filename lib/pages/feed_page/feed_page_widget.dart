@@ -7,6 +7,7 @@ import 'package:pivo_front/domain/entity/beer.dart';
 import 'package:pivo_front/domain/entity/feedback.dart';
 import 'package:pivo_front/domain/entity/photo.dart';
 import 'package:pivo_front/res/assets.dart';
+import 'package:pivo_front/uikit/avatar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'feed_page_wm.dart';
@@ -87,11 +88,7 @@ class FeedBackWidget extends StatelessWidget {
             children: [
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                leading: CircleAvatar(
-                  foregroundImage: CachedNetworkImageProvider(
-                    item.user.avatarUrl ?? '',
-                  ),
-                ),
+                leading: Avatar(data: item.user),
                 title: Text(
                   item.user.username,
                   overflow: TextOverflow.ellipsis,
