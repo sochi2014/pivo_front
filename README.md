@@ -1,6 +1,8 @@
 # pivo_front
+___
+![Firebase ci state](https://github.com/sochi2014/pivo_front/actions/workflows/firebase-hosting-merge.yml/badge.svg?event=push)
 
-A new Flutter project.
+A pivo review app!
 
 ## Getting Started
 
