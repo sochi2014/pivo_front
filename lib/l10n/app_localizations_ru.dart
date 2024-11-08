@@ -19,6 +19,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get countryLabel => 'Регион';
 
   @override
+  String get phone => 'Телефон';
+
+  @override
   String get check => 'Проверить';
 
   @override

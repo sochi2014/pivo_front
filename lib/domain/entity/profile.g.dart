@@ -12,6 +12,10 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       username: json['username'] as String,
       avatarUrl: json['avatar_url'] as String?,
+      phoneNumber: json['phone_number'] as String?,
+      level: json['level'] == null
+          ? null
+          : Level.fromJson(json['level'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) {
@@ -27,5 +31,7 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) {
   val['email'] = instance.email;
   val['username'] = instance.username;
   writeNotNull('avatar_url', instance.avatarUrl);
+  writeNotNull('phone_number', instance.phoneNumber);
+  writeNotNull('level', instance.level);
   return val;
 }

@@ -119,6 +119,12 @@ abstract class AppLocalizations {
   /// **'Country'**
   String get countryLabel;
 
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
   /// No description provided for @check.
   ///
   /// In en, this message translates to:

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -68,7 +69,9 @@ class _AuthForm extends StatelessWidget {
                           wm: wm,
                           state: state,
                         ),
-                      AuthState.register || AuthState.loadingRegister  => _RegisterWidget(
+                      AuthState.register ||
+                      AuthState.loadingRegister =>
+                        _RegisterWidget(
                           key: const Key('register-widget'),
                           wm: wm,
                           state: state,
@@ -229,7 +232,7 @@ class _PhoneWidget extends StatelessWidget {
                     child: switch (state) {
                       AuthState.phone => FilledButton(
                           onPressed: wm.onSendCode,
-                          child:  Center(
+                          child: Center(
                             child: Text(localizations.login),
                           ),
                         ),
@@ -253,7 +256,6 @@ class _PhoneWidget extends StatelessWidget {
   }
 }
 
-
 class _RegisterWidget extends StatelessWidget {
   const _RegisterWidget({
     super.key,
@@ -274,96 +276,125 @@ class _RegisterWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Flexible(
-          flex: 6,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 16.0,
-            ),
-            child: Text(
-              localizations.registerHint,
-              textAlign: TextAlign.center,
-              style: textTheme.bodyLarge?.copyWith(
-                color: colorScheme.onSurface,
-              ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 16.0,
+          ),
+          child: Text(
+            localizations.registerHint,
+            textAlign: TextAlign.center,
+            style: textTheme.bodyLarge?.copyWith(
+              color: colorScheme.onSurface,
             ),
           ),
         ),
-        Flexible(
-          flex: 6,
-          child: LayoutBuilder(builder: (context, constrains) {
-            final maxWidth = constrains.biggest.width;
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Flexible(
-                  flex: maxWidth > 300 ? 2 : 1,
-                  child: SizedBox(
-                    height: 48,
-                    child: TextField(
-                      textAlign: TextAlign.start,
-                      controller: wm.emailController,
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: colorScheme.onBackground,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      decoration: InputDecoration(
-                        hintText: localizations.email,
+        SizedBox(
+          height: 48,
+          child: TextField(
+            textAlign: TextAlign.start,
+            controller: wm.emailController,
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onBackground,
+              overflow: TextOverflow.ellipsis,
+            ),
+            decoration: InputDecoration(
+              hintText: localizations.email,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+          height: 10,
+        ),
+        SizedBox(
+          height: 48,
+          child: TextField(
+            textAlign: TextAlign.start,
+            controller: wm.usernameController,
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onBackground,
+              overflow: TextOverflow.ellipsis,
+            ),
+            decoration: InputDecoration(
+              hintText: localizations.username,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+          height: 10,
+        ),
+        SizedBox(
+          height: 48,
+          child: TextField(
+            textAlign: TextAlign.start,
+            controller: wm.phoneController,
+            style: textTheme.bodyMedium?.copyWith(
+              color: colorScheme.onBackground,
+              overflow: TextOverflow.ellipsis,
+            ),
+            decoration: InputDecoration(
+              hintText: localizations.phone,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+          height: 10,
+        ),
+        Center(
+          child: AspectRatio(
+            aspectRatio: 3 /2,
+            child: ValueListenableBuilder(
+              valueListenable: wm.avatarState,
+              builder: (context, photo, _) {
+                if (photo == null) {
+                  return Card.outlined(
+                    clipBehavior: Clip.hardEdge,
+                    child: InkWell(
+                      onTap: wm.addPhoto,
+                      child: const Center(
+                        child: Icon(Icons.add),
                       ),
                     ),
+                  );
+                }
+
+                return ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(16),
                   ),
-                ),
-                const SizedBox(
-                  width: 10,
-                  height: 10,
-                ),
-                Flexible(
-                  flex: maxWidth > 300 ? 2 : 1,
-                  child: SizedBox(
-                    height: 48,
-                    child: TextField(
-                      textAlign: TextAlign.start,
-                      controller: wm.usernameController,
-                      style: textTheme.bodyMedium?.copyWith(
-                        color: colorScheme.onBackground,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      decoration: InputDecoration(
-                        hintText: localizations.username,
-                      ),
-                    ),
+                  child: CachedNetworkImage(
+                    imageUrl: photo,
+                    fit: BoxFit.cover,
                   ),
+                );
+              },
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+          height: 10,
+        ),
+        SizedBox(
+          height: 48,
+          child: switch (state) {
+            AuthState.register => FilledButton(
+              onPressed: wm.onRegister,
+              child: Center(
+                child: Text(localizations.register),
+              ),
+            ),
+            _ => const FilledButton(
+              onPressed: null,
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
                 ),
-                const SizedBox(
-                  width: 10,
-                  height: 10,
-                ),
-                Flexible(
-                  flex: 1,
-                  child: SizedBox(
-                    height: 48,
-                    child: switch (state) {
-                      AuthState.register => FilledButton(
-                          onPressed: wm.onRegister,
-                          child:  Center(
-                            child: Text(localizations.register),
-                          ),
-                        ),
-                      _ => const FilledButton(
-                          onPressed: null,
-                          child: Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                    },
-                  ),
-                ),
-              ],
-            );
-          }),
+              ),
+            ),
+          },
         ),
       ],
     );
