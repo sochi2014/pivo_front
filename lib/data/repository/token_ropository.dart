@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class TokenRepository extends ChangeNotifier {
+class TokenRepository extends ChangeNotifier implements ValueListenable<bool> {
   TokenRepository({
     bool useCaching = true,
   }) : _useCaching = useCaching;
@@ -59,4 +59,7 @@ class TokenRepository extends ChangeNotifier {
     await storage.setString('accessToken', _accessToken!);
     await storage.setString('refreshToken', _refreshToken!);
   }
+
+  @override
+  bool get value => auth;
 }

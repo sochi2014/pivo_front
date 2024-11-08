@@ -529,6 +529,7 @@ class VerificationRouteWidget
     extends PageRouteInfo<VerificationRouteWidgetArgs> {
   VerificationRouteWidget({
     Key? key,
+    required ValueChanged<bool> onResult,
     WidgetModelFactory<
             WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
         wmFactory = defaultVerificationPageWidgetModelFactory,
@@ -537,6 +538,7 @@ class VerificationRouteWidget
           VerificationRouteWidget.name,
           args: VerificationRouteWidgetArgs(
             key: key,
+            onResult: onResult,
             wmFactory: wmFactory,
           ),
           initialChildren: children,
@@ -547,10 +549,10 @@ class VerificationRouteWidget
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<VerificationRouteWidgetArgs>(
-          orElse: () => const VerificationRouteWidgetArgs());
+      final args = data.argsAs<VerificationRouteWidgetArgs>();
       return VerificationPageWidget(
         key: args.key,
+        onResult: args.onResult,
         wmFactory: args.wmFactory,
       );
     },
@@ -560,16 +562,19 @@ class VerificationRouteWidget
 class VerificationRouteWidgetArgs {
   const VerificationRouteWidgetArgs({
     this.key,
+    required this.onResult,
     this.wmFactory = defaultVerificationPageWidgetModelFactory,
   });
 
   final Key? key;
+
+  final ValueChanged<bool> onResult;
 
   final WidgetModelFactory<
       WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
 
   @override
   String toString() {
-    return 'VerificationRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+    return 'VerificationRouteWidgetArgs{key: $key, onResult: $onResult, wmFactory: $wmFactory}';
   }
 }

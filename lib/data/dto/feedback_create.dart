@@ -9,7 +9,6 @@ class FeedbackCreate with _$FeedbackCreate {
   const factory FeedbackCreate({
     required String text,
     required int ratings,
-    @JsonKey(name: 'user_id') required int userId,
     @JsonKey(name: 'beer_id') int? beerId,
     @JsonKey(name: 'place_id') int? placeId,
     @JsonKey(name: 'type_feedback')

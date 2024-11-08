@@ -101,6 +101,12 @@ abstract class AppLocalizations {
   /// **'Beer Harmony'**
   String get title;
 
+  /// No description provided for @underaged.
+  ///
+  /// In en, this message translates to:
+  /// **'You haven\'t reached the age to drink beer.'**
+  String get underaged;
+
   /// No description provided for @birthdayLabel.
   ///
   /// In en, this message translates to:

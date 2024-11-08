@@ -31,14 +31,12 @@ class FeedbackPageWidget extends ElementaryWidget<IFeedbackPageWidgetModel> {
   Widget build(IFeedbackPageWidgetModel wm) {
     final localizations = wm.localizations;
     final beer = this.beer;
-    return StreamBuilder(
-      stream: wm.profile.stream,
-      initialData: wm.profile.valueOrNull,
-      builder: (context, snapshot) {
-        final user = snapshot.data;
-        if (user == null) {
-          return Scaffold(
-            body: const PromoPage(),
+    return ValueListenableBuilder(
+      valueListenable: wm.authState,
+      builder: (context, auth, _) {
+        if (!auth) {
+          return const Scaffold(
+            body: PromoPage(),
           );
         }
 
@@ -162,7 +160,7 @@ class FeedbackPageWidget extends ElementaryWidget<IFeedbackPageWidgetModel> {
                     child: Align(
                       alignment: AlignmentDirectional.bottomEnd,
                       child: FilledButton(
-                        onPressed: () => wm.sendReview(user),
+                        onPressed: wm.sendReview,
                         child: Text(localizations.send),
                       ),
                     ),

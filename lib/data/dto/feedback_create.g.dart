@@ -10,7 +10,6 @@ _$FeedbackCreateImpl _$$FeedbackCreateImplFromJson(Map<String, dynamic> json) =>
     _$FeedbackCreateImpl(
       text: json['text'] as String,
       ratings: (json['ratings'] as num).toInt(),
-      userId: (json['user_id'] as num).toInt(),
       beerId: (json['beer_id'] as num?)?.toInt(),
       placeId: (json['place_id'] as num?)?.toInt(),
       typeFeedback:
@@ -27,7 +26,6 @@ Map<String, dynamic> _$$FeedbackCreateImplToJson(
     <String, dynamic>{
       'text': instance.text,
       'ratings': instance.ratings,
-      'user_id': instance.userId,
       'beer_id': instance.beerId,
       'place_id': instance.placeId,
       'type_feedback': _$TypeFeedbackEnumMap[instance.typeFeedback]!,
