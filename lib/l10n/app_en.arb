@@ -25,11 +25,9 @@
          "email": "Email",
          "username": "Username",
      "register": "Register",
-     "feedbackBeerTitle": "Review on beer",
-     "feedbackPlaceTitle": "Review on place",
+     "feedbackBeerTitle": "Review",
       "feedbackFeelings": "Describe your feelings:",
-      "feedbackRateBeer": "Rate beer:",
-      "feedbackRatePlace": "Rate place:",
+      "feedbackRateBeer": "Rate beer or bar:",
       "feedbackSharePhotos": "Share photos:",
       "send": "Send",
   "verificationTitle": "Let's make sure that you have reached the legal drinking age in your country."

@@ -30,7 +30,7 @@ class FeedbackPageWidget extends ElementaryWidget<IFeedbackPageWidgetModel> {
   @override
   Widget build(IFeedbackPageWidgetModel wm) {
     final localizations = wm.localizations;
-    final beer = this.beer;
+
     return ValueListenableBuilder(
       valueListenable: wm.authState,
       builder: (context, auth, _) {
@@ -54,34 +54,79 @@ class FeedbackPageWidget extends ElementaryWidget<IFeedbackPageWidgetModel> {
                         localizations.feedbackBeerTitle,
                         style: wm.theme.textTheme.headlineLarge,
                       ),
-                      if (beer != null) ...[
+                      if (beerId != null) ...[
                         const SizedBox(height: 8),
-                        ListTile(
-                          contentPadding: EdgeInsets.zero,
-                          leading: AspectRatio(
-                            aspectRatio: 1,
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(4),
-                              ),
-                              child: CachedNetworkImage(
-                                imageUrl: beer.photo ?? '',
-                                fit: BoxFit.cover,
-                                errorWidget: (_, __, ___) => Image.asset(
-                                  Assets.pivoa[2],
-                                  fit: BoxFit.cover,
+                        ValueListenableBuilder(
+                          valueListenable: wm.beerState,
+                          builder: (context, beer, _) {
+                            if (beer == null) {
+                              return const SizedBox.shrink();
+                            }
+
+                            return ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              leading: AspectRatio(
+                                aspectRatio: 1,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(4),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: beer.photo ?? '',
+                                    fit: BoxFit.cover,
+                                    errorWidget: (_, __, ___) => Image.asset(
+                                      Assets.pivoa[2],
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                          title: Text(
-                            beer.name,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          subtitle: Text(
-                            beer.type ?? '',
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                              title: Text(
+                                beer.name,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              subtitle: Text(
+                                beer.type ?? '',
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                      if (placeId != null) ...[
+                        const SizedBox(height: 8),
+                        ValueListenableBuilder(
+                          valueListenable: wm.placeState,
+                          builder: (context, place, _) {
+                            if (place == null) {
+                              return const SizedBox.shrink();
+                            }
+
+                            return ListTile(
+                              contentPadding: EdgeInsets.zero,
+                              leading: AspectRatio(
+                                aspectRatio: 1,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(4),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: place.toString(),
+                                    errorWidget: (_, __, ___) {
+                                      return Image.asset(
+                                        Assets.pivoa[1],
+                                        fit: BoxFit.cover,
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                              title: Text(place?.name ?? ''),
+                              subtitle: Text('${place?.address.city ?? ' '}, '
+                                  '${place?.address.street ?? ' '}, '
+                                  '${place?.address.house ?? ' '}'),
+                            );
+                          },
                         ),
                       ],
                       const SizedBox(height: 16),

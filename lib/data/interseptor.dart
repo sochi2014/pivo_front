@@ -55,7 +55,7 @@ class JWTInterceptor extends QueuedInterceptor {
   Future onError(error, handler) async {
     if ((error.response?.statusCode == 403 ||
             error.response?.statusCode == 401) &&
-        error.requestOptions.path != '/auth/email/part1') {
+        error.requestOptions.path != '/api/v1/auth_routes/refresh') {
       await _refresh();
       if (repository.auth) {
         final response = await _retry(error.requestOptions);

@@ -6,8 +6,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:pivo_front/data/dto/feedback_create.dart';
+import 'package:pivo_front/data/service/beer_service.dart';
 import 'package:pivo_front/data/service/feedback_service.dart';
+import 'package:pivo_front/data/service/place_service.dart';
+import 'package:pivo_front/domain/entity/beer.dart';
 import 'package:pivo_front/domain/entity/feedback.dart';
+import 'package:pivo_front/domain/entity/place.dart';
 import 'package:pivo_front/domain/use_case/profile_use_case.dart';
 import 'package:pivo_front/internal/app_components.dart';
 import 'package:pivo_front/util/responsive_widget.dart';
@@ -20,6 +24,10 @@ import 'feedback_page_widget.dart';
 abstract interface class IFeedbackPageWidgetModel
     implements IWidgetModel, IResponsive, IThemeProvider {
   ValueListenable<int> get ratingState;
+
+  ValueListenable<Beer?> get beerState;
+
+  ValueListenable<Place?> get placeState;
 
   ValueListenable<List<String>> get photosState;
 
@@ -42,6 +50,8 @@ FeedbackPageWidgetModel defaultFeedbackPageWidgetModelFactory(
     AppComponents().profileUseCase,
     AppComponents().feedbackService,
     AppComponents().storageService,
+    AppComponents().beerService,
+    AppComponents().placeService,
   );
 }
 
@@ -53,6 +63,8 @@ class FeedbackPageWidgetModel
     implements IFeedbackPageWidgetModel {
   final ProfileUseCase profileUseCase;
   final FeedbackService feedbackService;
+  final BeerService beerService;
+  final PlaceService placeService;
   final S3 storage;
 
   @override
@@ -66,17 +78,57 @@ class FeedbackPageWidgetModel
   @override
   ValueListenable<bool> get authState => profileUseCase.repository;
 
+  @override
+  late final ValueNotifier<Beer?> beerState = ValueNotifier(widget.beer);
+
+  @override
+  late final ValueNotifier<Place?> placeState = ValueNotifier(widget.place);
+
   FeedbackPageWidgetModel(
     super.model,
     this.profileUseCase,
     this.feedbackService,
     this.storage,
+    this.beerService,
+    this.placeService,
   );
 
   @override
   void initWidgetModel() {
     super.initWidgetModel();
     profileUseCase.loadProfile();
+    _loadBeer();
+    _loadPlace();
+  }
+
+  Future<void> _loadPlace() async {
+    final placeId = widget.placeId;
+    if (placeId == null) {
+      return;
+    }
+
+    final place = widget.place ??
+        await placeService.getPlaceById(
+          placeId,
+        );
+    placeState.value = place;
+  }
+
+  Future<void> _loadBeer() async {
+    final beerId = widget.beerId;
+    if (beerId == null) {
+      return;
+    }
+
+    final beer = widget.beer ?? await beerService.getBeerById(beerId);
+    beerState.value = beer;
+  }
+
+  @override
+  void didUpdateWidget(FeedbackPageWidget oldWidget) {
+    _loadBeer();
+    _loadPlace();
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -86,6 +138,8 @@ class FeedbackPageWidgetModel
 
   @override
   void dispose() {
+    beerState.dispose();
+    placeState.dispose();
     textController.dispose();
     photosState.dispose();
     ratingState.dispose();

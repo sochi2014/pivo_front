@@ -14,6 +14,8 @@ export 'feedback_page/feedback_page_wm.dart';
 export 'home_page/home_page.dart';
 export 'map_page/map_page_widget.dart';
 export 'map_page/map_page_wm.dart';
+export 'place_detail_page/place_detail_page_widget.dart';
+export 'place_detail_page/place_detail_page_wm.dart';
 export 'profile_page/profile_page_widget.dart';
 export 'profile_page/profile_page_wm.dart';
 export 'promo_page/promo_page.dart';

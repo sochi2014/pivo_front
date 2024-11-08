@@ -248,14 +248,8 @@ abstract class AppLocalizations {
   /// No description provided for @feedbackBeerTitle.
   ///
   /// In en, this message translates to:
-  /// **'Review on beer'**
+  /// **'Review'**
   String get feedbackBeerTitle;
-
-  /// No description provided for @feedbackPlaceTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Review on place'**
-  String get feedbackPlaceTitle;
 
   /// No description provided for @feedbackFeelings.
   ///
@@ -266,14 +260,8 @@ abstract class AppLocalizations {
   /// No description provided for @feedbackRateBeer.
   ///
   /// In en, this message translates to:
-  /// **'Rate beer:'**
+  /// **'Rate beer or bar:'**
   String get feedbackRateBeer;
-
-  /// No description provided for @feedbackRatePlace.
-  ///
-  /// In en, this message translates to:
-  /// **'Rate place:'**
-  String get feedbackRatePlace;
 
   /// No description provided for @feedbackSharePhotos.
   ///

@@ -4,6 +4,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pivo_front/data/service/feedback_service.dart';
 import 'package:pivo_front/domain/entity/beer.dart';
 import 'package:pivo_front/domain/entity/feedback.dart';
+import 'package:pivo_front/domain/entity/place.dart';
 import 'package:pivo_front/internal/app_components.dart';
 import 'package:pivo_front/navigation/router.dart';
 import 'package:pivo_front/util/responsive_widget.dart';
@@ -19,6 +20,8 @@ abstract interface class IFeedPageWidgetModel
   Future<void> refresh();
 
   void onBeerTap(Beer item);
+
+  void onPlaceTap(Place value);
 }
 
 FeedPageWidgetModel defaultFeedPageWidgetModelFactory(BuildContext context) {
@@ -71,9 +74,16 @@ class FeedPageWidgetModel extends WidgetModel<FeedPageWidget, FeedPageModel>
   @override
   void onBeerTap(Beer item) {
     router.push(
-      BeerDatilRouteWidget(
-          beerId: item.id,
-          beer: item
+      BeerDatilRouteWidget(beerId: item.id, beer: item),
+    );
+  }
+
+  @override
+  void onPlaceTap(Place value) {
+    router.push(
+      PlaceDetailRouteWidget(
+        placeId: value.id,
+        place: value,
       ),
     );
   }

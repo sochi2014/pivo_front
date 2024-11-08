@@ -474,6 +474,71 @@ class MapRouteWidgetArgs {
 }
 
 /// generated route for
+/// [PlaceDetailPageWidget]
+class PlaceDetailRouteWidget extends PageRouteInfo<PlaceDetailRouteWidgetArgs> {
+  PlaceDetailRouteWidget({
+    Key? key,
+    required int placeId,
+    Place? place,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultPlaceDetailPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          PlaceDetailRouteWidget.name,
+          args: PlaceDetailRouteWidgetArgs(
+            key: key,
+            placeId: placeId,
+            place: place,
+            wmFactory: wmFactory,
+          ),
+          rawPathParams: {'placeId': placeId},
+          initialChildren: children,
+        );
+
+  static const String name = 'PlaceDetailRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final pathParams = data.inheritedPathParams;
+      final args = data.argsAs<PlaceDetailRouteWidgetArgs>(
+          orElse: () => PlaceDetailRouteWidgetArgs(
+              placeId: pathParams.getInt('placeId')));
+      return PlaceDetailPageWidget(
+        key: args.key,
+        placeId: args.placeId,
+        place: args.place,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class PlaceDetailRouteWidgetArgs {
+  const PlaceDetailRouteWidgetArgs({
+    this.key,
+    required this.placeId,
+    this.place,
+    this.wmFactory = defaultPlaceDetailPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final int placeId;
+
+  final Place? place;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'PlaceDetailRouteWidgetArgs{key: $key, placeId: $placeId, place: $place, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [ProfilePageWidget]
 class ProfileRouteWidget extends PageRouteInfo<ProfileRouteWidgetArgs> {
   ProfileRouteWidget({
