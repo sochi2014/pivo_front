@@ -6,6 +6,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pivo_front/domain/entity/beer.dart';
 import 'package:pivo_front/domain/entity/feedback.dart';
 import 'package:pivo_front/domain/entity/photo.dart';
+import 'package:pivo_front/domain/entity/place.dart';
 import 'package:pivo_front/res/assets.dart';
 import 'package:pivo_front/uikit/avatar.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -33,7 +34,7 @@ class FeedPageWidget extends ElementaryWidget<IFeedPageWidgetModel> {
           child: CustomScrollView(
             slivers: [
               SliverPadding(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 4,
                 ),
                 sliver: PagedSliverList<int, Feedback>.separated(
@@ -43,6 +44,7 @@ class FeedPageWidget extends ElementaryWidget<IFeedPageWidgetModel> {
                       return FeedBackWidget(
                         item: item,
                         onBeerTap: wm.onBeerTap,
+                        onPlaceTap: wm.onPlaceTap,
                       );
                     },
                   ),
@@ -64,10 +66,12 @@ class FeedBackWidget extends StatelessWidget {
     super.key,
     required this.item,
     this.onBeerTap,
+    this.onPlaceTap,
   });
 
   final Feedback item;
   final ValueChanged<Beer>? onBeerTap;
+  final ValueChanged<Place>? onPlaceTap;
 
   @override
   Widget build(BuildContext context) {
@@ -139,6 +143,35 @@ class FeedBackWidget extends StatelessWidget {
                     Icons.navigate_next,
                   ),
                 ),
+              ],
+              const SizedBox(height: 8),
+              if (place != null) ...[
+                const SizedBox(height: 8),
+                ListTile(
+                  onTap: () => onPlaceTap?.call(place),
+                  contentPadding: EdgeInsets.zero,
+                  leading: AspectRatio(
+                    aspectRatio: 1,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(4),
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl: place.toString(),
+                        errorWidget: (_, __, ___) {
+                          return Image.asset(
+                            Assets.pivoa[1],
+                            fit: BoxFit.cover,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  title: Text(place.name),
+                  subtitle: Text('${place.address.city ?? ' '}, '
+                      '${place.address.street ?? ' '}, '
+                      '${place.address.house ?? ' '}'),
+                )
               ],
               const SizedBox(height: 8),
               Row(

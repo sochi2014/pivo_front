@@ -25,6 +25,8 @@ abstract interface class IMapPageWidgetModel
   FutureOr<void> choseCity();
 
   void onTap(Place value);
+
+  void openPlace(Place place);
 }
 
 MapPageWidgetModel defaultMapPageWidgetModelFactory(BuildContext context) {
@@ -95,5 +97,15 @@ class MapPageWidgetModel extends WidgetModel<MapPageWidget, MapPageModel>
     if(index > 0){
       controller.jumpToPage(index);
     }
+  }
+
+  @override
+  void openPlace(Place place) {
+    router.push(
+      PlaceDetailRouteWidget(
+        placeId: place.id,
+        place: place,
+      ),
+    );
   }
 }

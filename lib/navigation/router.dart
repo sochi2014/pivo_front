@@ -50,6 +50,10 @@ class AppRouter extends RootStackRouter {
                   path: 'beer/:beerId',
                   page: BeerDatilRouteWidget.page,
                 ),
+                AutoRoute(
+                  path: 'place/:placeId',
+                  page: PlaceDetailRouteWidget.page,
+                ),
               ],
               initial: true,
             ),
@@ -72,6 +76,10 @@ class AppRouter extends RootStackRouter {
                 AutoRoute(
                   page: MapRouteWidget.page,
                   initial: true,
+                ),
+                AutoRoute(
+                  path: 'place/:placeId',
+                  page: PlaceDetailRouteWidget.page,
                 ),
               ],
             ),

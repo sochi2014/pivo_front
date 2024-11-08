@@ -33,9 +33,10 @@ class Avatar extends StatelessWidget {
                     aspectRatio: 1.0,
                     child: ClipOval(
                       child: CachedNetworkImage(
-                        imageUrl: 'https://${data.avatarUrl ?? ''}',
+                        imageUrl: data.avatarUrl ?? '',
                         width: double.infinity,
                         height: double.infinity,
+                        fit: BoxFit.cover,
                         errorWidget: (context, __, ___) {
                           final themeData = Theme.of(context);
                           return ColoredBox(
