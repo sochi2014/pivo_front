@@ -82,19 +82,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get register => 'Зарегистрироваться';
 
   @override
-  String get feedbackBeerTitle => 'Отзыв на пиво';
-
-  @override
-  String get feedbackPlaceTitle => 'Отзыв на бар';
+  String get feedbackBeerTitle => 'Отзыв';
 
   @override
   String get feedbackFeelings => 'Опишите свои впечатления:';
 
   @override
-  String get feedbackRateBeer => 'Оцените пиво:';
-
-  @override
-  String get feedbackRatePlace => 'Оцените бар:';
+  String get feedbackRateBeer => 'Оцените пиво или бар:';
 
   @override
   String get feedbackSharePhotos => 'Поделитесь фото:';

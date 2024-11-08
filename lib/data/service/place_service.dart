@@ -14,4 +14,7 @@ abstract class PlaceService {
     @Query('offset') int offset = 0,
     @Query('limit') int limit = 10,
   });
+
+  @GET(PlaceUrl.placesById)
+  Future<Place> getPlaceById(@Path() int placeId);
 }

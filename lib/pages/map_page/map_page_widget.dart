@@ -52,37 +52,41 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
                           maxWidth: 500,
                         ),
                         child: PageView.builder(
-                            controller: wm.controller,
-                            itemCount: state.length,
-                            itemBuilder: (context, index) {
-                              final place = state[index];
-                              return Card.filled(
-                                child: ListTile(
-                                  leading: AspectRatio(
-                                    aspectRatio: 1,
-                                    child: ClipRRect(
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(16),
-                                      ),
-                                      child: CachedNetworkImage(
-                                        imageUrl: place.toString(),
-                                        errorWidget: (_, __, ___) {
-                                          return Image.asset(
-                                            Assets.pivoa[1],
-                                            fit: BoxFit.cover,
-                                          );
-                                        },
-                                      ),
+                          controller: wm.controller,
+                          itemCount: state.length,
+                          itemBuilder: (context, index) {
+                            final place = state[index];
+                            return Card.filled(
+                              child: ListTile(
+                                leading: AspectRatio(
+                                  aspectRatio: 1,
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(16),
+                                    ),
+                                    child: CachedNetworkImage(
+                                      imageUrl: place.toString(),
+                                      errorWidget: (_, __, ___) {
+                                        return Image.asset(
+                                          Assets.pivoa[1],
+                                          fit: BoxFit.cover,
+                                        );
+                                      },
                                     ),
                                   ),
-                                  title: Text(place.name),
-                                  subtitle:
-                                      Text('${place.address.city ?? ' '}, '
-                                          '${place.address.street ?? ' '}, '
-                                          '${place.address.house ?? ' '}'),
                                 ),
-                              );
-                            }),
+                                title: Text(place.name),
+                                subtitle: Text('${place.address.city ?? ' '}, '
+                                    '${place.address.street ?? ' '}, '
+                                    '${place.address.house ?? ' '}'),
+                                trailing: IconButton(
+                                  onPressed: () => wm.openPlace(place),
+                                  icon: Icon(Icons.more_horiz),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   ),
