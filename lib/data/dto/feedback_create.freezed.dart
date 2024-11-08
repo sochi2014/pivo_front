@@ -22,8 +22,6 @@ FeedbackCreate _$FeedbackCreateFromJson(Map<String, dynamic> json) {
 mixin _$FeedbackCreate {
   String get text => throw _privateConstructorUsedError;
   int get ratings => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user_id')
-  int get userId => throw _privateConstructorUsedError;
   @JsonKey(name: 'beer_id')
   int? get beerId => throw _privateConstructorUsedError;
   @JsonKey(name: 'place_id')
@@ -52,7 +50,6 @@ abstract class $FeedbackCreateCopyWith<$Res> {
   $Res call(
       {String text,
       int ratings,
-      @JsonKey(name: 'user_id') int userId,
       @JsonKey(name: 'beer_id') int? beerId,
       @JsonKey(name: 'place_id') int? placeId,
       @JsonKey(name: 'type_feedback') TypeFeedback typeFeedback,
@@ -76,7 +73,6 @@ class _$FeedbackCreateCopyWithImpl<$Res, $Val extends FeedbackCreate>
   $Res call({
     Object? text = null,
     Object? ratings = null,
-    Object? userId = null,
     Object? beerId = freezed,
     Object? placeId = freezed,
     Object? typeFeedback = null,
@@ -90,10 +86,6 @@ class _$FeedbackCreateCopyWithImpl<$Res, $Val extends FeedbackCreate>
       ratings: null == ratings
           ? _value.ratings
           : ratings // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
               as int,
       beerId: freezed == beerId
           ? _value.beerId
@@ -126,7 +118,6 @@ abstract class _$$FeedbackCreateImplCopyWith<$Res>
   $Res call(
       {String text,
       int ratings,
-      @JsonKey(name: 'user_id') int userId,
       @JsonKey(name: 'beer_id') int? beerId,
       @JsonKey(name: 'place_id') int? placeId,
       @JsonKey(name: 'type_feedback') TypeFeedback typeFeedback,
@@ -148,7 +139,6 @@ class __$$FeedbackCreateImplCopyWithImpl<$Res>
   $Res call({
     Object? text = null,
     Object? ratings = null,
-    Object? userId = null,
     Object? beerId = freezed,
     Object? placeId = freezed,
     Object? typeFeedback = null,
@@ -162,10 +152,6 @@ class __$$FeedbackCreateImplCopyWithImpl<$Res>
       ratings: null == ratings
           ? _value.ratings
           : ratings // ignore: cast_nullable_to_non_nullable
-              as int,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
               as int,
       beerId: freezed == beerId
           ? _value.beerId
@@ -193,7 +179,6 @@ class _$FeedbackCreateImpl implements _FeedbackCreate {
   const _$FeedbackCreateImpl(
       {required this.text,
       required this.ratings,
-      @JsonKey(name: 'user_id') required this.userId,
       @JsonKey(name: 'beer_id') this.beerId,
       @JsonKey(name: 'place_id') this.placeId,
       @JsonKey(name: 'type_feedback') this.typeFeedback = TypeFeedback.beer,
@@ -207,9 +192,6 @@ class _$FeedbackCreateImpl implements _FeedbackCreate {
   final String text;
   @override
   final int ratings;
-  @override
-  @JsonKey(name: 'user_id')
-  final int userId;
   @override
   @JsonKey(name: 'beer_id')
   final int? beerId;
@@ -230,7 +212,7 @@ class _$FeedbackCreateImpl implements _FeedbackCreate {
 
   @override
   String toString() {
-    return 'FeedbackCreate(text: $text, ratings: $ratings, userId: $userId, beerId: $beerId, placeId: $placeId, typeFeedback: $typeFeedback, photos: $photos)';
+    return 'FeedbackCreate(text: $text, ratings: $ratings, beerId: $beerId, placeId: $placeId, typeFeedback: $typeFeedback, photos: $photos)';
   }
 
   @override
@@ -240,7 +222,6 @@ class _$FeedbackCreateImpl implements _FeedbackCreate {
             other is _$FeedbackCreateImpl &&
             (identical(other.text, text) || other.text == text) &&
             (identical(other.ratings, ratings) || other.ratings == ratings) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
             (identical(other.beerId, beerId) || other.beerId == beerId) &&
             (identical(other.placeId, placeId) || other.placeId == placeId) &&
             (identical(other.typeFeedback, typeFeedback) ||
@@ -250,8 +231,8 @@ class _$FeedbackCreateImpl implements _FeedbackCreate {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, text, ratings, userId, beerId,
-      placeId, typeFeedback, const DeepCollectionEquality().hash(_photos));
+  int get hashCode => Object.hash(runtimeType, text, ratings, beerId, placeId,
+      typeFeedback, const DeepCollectionEquality().hash(_photos));
 
   /// Create a copy of FeedbackCreate
   /// with the given fields replaced by the non-null parameter values.
@@ -274,7 +255,6 @@ abstract class _FeedbackCreate implements FeedbackCreate {
   const factory _FeedbackCreate(
           {required final String text,
           required final int ratings,
-          @JsonKey(name: 'user_id') required final int userId,
           @JsonKey(name: 'beer_id') final int? beerId,
           @JsonKey(name: 'place_id') final int? placeId,
           @JsonKey(name: 'type_feedback') final TypeFeedback typeFeedback,
@@ -288,9 +268,6 @@ abstract class _FeedbackCreate implements FeedbackCreate {
   String get text;
   @override
   int get ratings;
-  @override
-  @JsonKey(name: 'user_id')
-  int get userId;
   @override
   @JsonKey(name: 'beer_id')
   int? get beerId;

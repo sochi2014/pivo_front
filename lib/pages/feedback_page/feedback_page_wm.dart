@@ -11,7 +11,6 @@ import 'package:pivo_front/domain/use_case/profile_use_case.dart';
 import 'package:pivo_front/internal/app_components.dart';
 import 'package:pivo_front/util/responsive_widget.dart';
 import 'package:pivo_front/util/theme_provider.dart';
-import 'package:pivo_front/util/value_stream_wrapper.dart';
 
 import 'feedback_page_model.dart';
 import 'feedback_page_widget.dart';
@@ -20,15 +19,15 @@ abstract interface class IFeedbackPageWidgetModel
     implements IWidgetModel, IResponsive, IThemeProvider {
   ValueListenable<int> get ratingState;
 
-  ValueStreamWrapper<Profile?> get profile;
-
   ValueListenable<List<String?>> get photosState;
 
   TextEditingController get textController;
 
+  ValueListenable<bool> get authState;
+
   void onRate(int i);
 
-  FutureOr<void> sendReview(Profile user);
+  FutureOr<void> sendReview();
 }
 
 FeedbackPageWidgetModel defaultFeedbackPageWidgetModelFactory(
@@ -58,6 +57,9 @@ class FeedbackPageWidgetModel
   @override
   final ValueNotifier<List<String?>> photosState = ValueNotifier([]);
 
+  @override
+  ValueListenable<bool> get authState => profileUseCase.repository;
+
   FeedbackPageWidgetModel(
     super.model,
     this.profileUseCase,
@@ -84,15 +86,11 @@ class FeedbackPageWidgetModel
   }
 
   @override
-  ValueStreamWrapper<Profile?> get profile => profileUseCase.profile;
-
-  @override
-  Future<void> sendReview(Profile user) async {
+  Future<void> sendReview() async {
     feedbackService.postFeedback(
       feedback: FeedbackCreate(
         text: textController.text,
         ratings: ratingState.value,
-        userId: user.id!,
         beerId: widget.beerId,
         placeId: widget.placeId,
         typeFeedback: TypeFeedback.values

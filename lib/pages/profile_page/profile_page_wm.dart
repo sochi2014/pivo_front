@@ -1,4 +1,5 @@
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pivo_front/domain/entity/profile.dart';
 import 'package:pivo_front/domain/use_case/profile_use_case.dart';
@@ -10,6 +11,8 @@ import 'profile_page_widget.dart';
 
 abstract interface class IProfilePageWidgetModel implements IWidgetModel {
   ValueStreamWrapper<Profile?> get profileStream;
+
+  ValueListenable<bool> get authState;
 }
 
 ProfilePageWidgetModel defaultProfilePageWidgetModelFactory(
@@ -30,8 +33,17 @@ class ProfilePageWidgetModel
   @override
   ValueStreamWrapper<Profile?> get profileStream => profileUseCase.profile;
 
+  @override
+  ValueListenable<bool> get authState => profileUseCase.repository;
+
   ProfilePageWidgetModel({
     required ProfilePageModel model,
     required this.profileUseCase,
   }) : super(model);
+
+  @override
+  void initWidgetModel() {
+    super.initWidgetModel();
+    profileUseCase.loadProfile();
+  }
 }

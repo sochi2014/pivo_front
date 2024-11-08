@@ -72,7 +72,7 @@ class PromoPage extends StatelessWidget {
                     SizedBox(height: 40),
                     FilledButton(
                       onPressed: () {
-                        context.navigateTo(AuthRouteWidget());
+                        context.pushRoute(AuthRouteWidget());
                       },
                       child: SizedBox(
                         height: 45,

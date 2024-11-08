@@ -10,6 +10,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get title => 'Хмельная гармония';
 
   @override
+  String get underaged => 'Вы не достигли возраста что бы пить пиво';
+
+  @override
   String get birthdayLabel => 'День рождения';
 
   @override
