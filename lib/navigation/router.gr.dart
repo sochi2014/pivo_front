@@ -529,7 +529,7 @@ class VerificationRouteWidget
     extends PageRouteInfo<VerificationRouteWidgetArgs> {
   VerificationRouteWidget({
     Key? key,
-    required ValueChanged<bool> onResult,
+    ValueChanged<bool>? onResult,
     WidgetModelFactory<
             WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
         wmFactory = defaultVerificationPageWidgetModelFactory,
@@ -549,7 +549,8 @@ class VerificationRouteWidget
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<VerificationRouteWidgetArgs>();
+      final args = data.argsAs<VerificationRouteWidgetArgs>(
+          orElse: () => const VerificationRouteWidgetArgs());
       return VerificationPageWidget(
         key: args.key,
         onResult: args.onResult,
@@ -562,13 +563,13 @@ class VerificationRouteWidget
 class VerificationRouteWidgetArgs {
   const VerificationRouteWidgetArgs({
     this.key,
-    required this.onResult,
+    this.onResult,
     this.wmFactory = defaultVerificationPageWidgetModelFactory,
   });
 
   final Key? key;
 
-  final ValueChanged<bool> onResult;
+  final ValueChanged<bool>? onResult;
 
   final WidgetModelFactory<
       WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;

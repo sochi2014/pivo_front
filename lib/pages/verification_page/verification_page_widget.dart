@@ -10,13 +10,13 @@ import 'verification_page_wm.dart';
 @RoutePage()
 class VerificationPageWidget
     extends ElementaryWidget<IVerificationPageWidgetModel> {
-  const VerificationPageWidget( {
+  const VerificationPageWidget({
     Key? key,
-    required this.onResult,
+    this.onResult,
     WidgetModelFactory wmFactory = defaultVerificationPageWidgetModelFactory,
   }) : super(wmFactory, key: key);
 
-  final ValueChanged<bool> onResult;
+  final ValueChanged<bool>? onResult;
 
   @override
   Widget build(IVerificationPageWidgetModel wm) {

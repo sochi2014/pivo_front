@@ -143,15 +143,24 @@ class FeedbackPageWidget extends ElementaryWidget<IFeedbackPageWidgetModel> {
                             return Card.outlined(
                               clipBehavior: Clip.hardEdge,
                               child: InkWell(
-                                onTap: () {},
+                                onTap: wm.addPhoto,
                                 child: const Center(
                                   child: Icon(Icons.add),
                                 ),
                               ),
                             );
                           }
+                          final photo = photos[index];
 
-                          return const SizedBox();
+                          return ClipRRect(
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                            child: CachedNetworkImage(
+                              imageUrl: photo,
+                              fit: BoxFit.cover,
+                            ),
+                          );
                         },
                       );
                     },
