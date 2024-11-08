@@ -19,5 +19,7 @@ export 'place_detail_page/place_detail_page_wm.dart';
 export 'profile_page/profile_page_widget.dart';
 export 'profile_page/profile_page_wm.dart';
 export 'promo_page/promo_page.dart';
+export 'teem_page/team_page_widget.dart';
+export 'teem_page/team_page_wm.dart';
 export 'verification_page/verification_page_widget.dart';
 export 'verification_page/verification_page_wm.dart';

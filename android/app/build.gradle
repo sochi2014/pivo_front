@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.itmo.pivo.app.pivo_front"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 34
     ndkVersion = flutter.ndkVersion
 
     compileOptions {

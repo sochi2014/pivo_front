@@ -11,6 +11,7 @@ import 'package:pivo_front/data/repository/token_ropository.dart';
 import 'package:pivo_front/data/service/auth_service.dart';
 import 'package:pivo_front/data/service/beer_service.dart';
 import 'package:pivo_front/data/service/feedback_service.dart';
+import 'package:pivo_front/data/service/geopos_service.dart';
 import 'package:pivo_front/data/service/place_service.dart';
 import 'package:pivo_front/domain/use_case/profile_use_case.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -31,6 +32,7 @@ class AppComponents {
   late final BeerService beerService = BeerService(dio);
   late final PlaceService placeService = PlaceService(dio);
   late final FeedbackService feedbackService = FeedbackService(dio);
+  late final GeoposService geoposService = GeoposService(dio);
 
   final storageService = S3(
     endpointUrl: 'https://s3.timeweb.cloud',

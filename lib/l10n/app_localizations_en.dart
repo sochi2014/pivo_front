@@ -34,7 +34,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get map => 'Search';
 
   @override
-  String get chat => 'Chat';
+  String get chat => 'Teemates';
+
+  @override
+  String get emptyPeople => 'No teammates nearby';
 
   @override
   String get profile => 'Account';

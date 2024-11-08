@@ -9,6 +9,7 @@
     "catalog": "Catalog",
     "map": "Search",
        "chat": "Teemates",
+       "emptyPeople": "No teammates nearby",
        "profile": "Account",
        "loginOrRegister": "Log in / Sign in",
 

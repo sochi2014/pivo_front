@@ -589,6 +589,56 @@ class ProfileRouteWidgetArgs {
 }
 
 /// generated route for
+/// [TeamPageWidget]
+class TeamRouteWidget extends PageRouteInfo<TeamRouteWidgetArgs> {
+  TeamRouteWidget({
+    Key? key,
+    WidgetModelFactory<
+            WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>>
+        wmFactory = defaultTeamPageWidgetModelFactory,
+    List<PageRouteInfo>? children,
+  }) : super(
+          TeamRouteWidget.name,
+          args: TeamRouteWidgetArgs(
+            key: key,
+            wmFactory: wmFactory,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'TeamRouteWidget';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<TeamRouteWidgetArgs>(
+          orElse: () => const TeamRouteWidgetArgs());
+      return TeamPageWidget(
+        key: args.key,
+        wmFactory: args.wmFactory,
+      );
+    },
+  );
+}
+
+class TeamRouteWidgetArgs {
+  const TeamRouteWidgetArgs({
+    this.key,
+    this.wmFactory = defaultTeamPageWidgetModelFactory,
+  });
+
+  final Key? key;
+
+  final WidgetModelFactory<
+      WidgetModel<ElementaryWidget<IWidgetModel>, ElementaryModel>> wmFactory;
+
+  @override
+  String toString() {
+    return 'TeamRouteWidgetArgs{key: $key, wmFactory: $wmFactory}';
+  }
+}
+
+/// generated route for
 /// [VerificationPageWidget]
 class VerificationRouteWidget
     extends PageRouteInfo<VerificationRouteWidgetArgs> {

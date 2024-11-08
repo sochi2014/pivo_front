@@ -22,83 +22,80 @@ class MapPageWidget extends ElementaryWidget<IMapPageWidgetModel> {
 
   @override
   Widget build(IMapPageWidgetModel wm) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.search),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const TextField(
+          decoration: InputDecoration(
+            prefixIcon: Icon(Icons.search),
           ),
         ),
-        body: ValueListenableBuilder(
-            valueListenable: wm.placesState,
-            builder: (context, state, _) {
-              return Stack(
-                fit: StackFit.expand,
-                children: [
-                  Positioned.fill(
-                    child: _buildMap(state, wm.onTap),
-                  ),
-                  Positioned(
-                    right: 0,
-                    left: 0,
-                    bottom: 75,
-                    child: PointerContext(
-                      child: ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          maxHeight: 100,
-                          maxWidth: 500,
-                        ),
-                        child: PageView.builder(
-                          controller: wm.controller,
-                          itemCount: state.length,
-                          itemBuilder: (context, index) {
-                            final place = state[index];
-                            return Card.filled(
-                              child: ListTile(
-                                leading: AspectRatio(
-                                  aspectRatio: 1,
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(16),
-                                    ),
-                                    child: CachedNetworkImage(
-                                      imageUrl: place.toString(),
-                                      errorWidget: (_, __, ___) {
-                                        return Image.asset(
-                                          Assets.pivoa[1],
-                                          fit: BoxFit.cover,
-                                        );
-                                      },
-                                    ),
+      ),
+      body: ValueListenableBuilder(
+          valueListenable: wm.placesState,
+          builder: (context, state, _) {
+            return Stack(
+              fit: StackFit.expand,
+              children: [
+                Positioned.fill(
+                  child: _buildMap(state, wm.onTap),
+                ),
+                Positioned(
+                  right: 0,
+                  left: 0,
+                  bottom: 75,
+                  child: PointerContext(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxHeight: 100,
+                        maxWidth: 500,
+                      ),
+                      child: PageView.builder(
+                        controller: wm.controller,
+                        itemCount: state.length,
+                        itemBuilder: (context, index) {
+                          final place = state[index];
+                          return Card.filled(
+                            child: ListTile(
+                              leading: AspectRatio(
+                                aspectRatio: 1,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(16),
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: place.toString(),
+                                    errorWidget: (_, __, ___) {
+                                      return Image.asset(
+                                        Assets.pivoa[1],
+                                        fit: BoxFit.cover,
+                                      );
+                                    },
                                   ),
                                 ),
-                                title: Text(place.name),
-                                subtitle: Text('${place.address.city ?? ' '}, '
-                                    '${place.address.street ?? ' '}, '
-                                    '${place.address.house ?? ' '}'),
-                                trailing: IconButton(
-                                  onPressed: () => wm.openPlace(place),
-                                  icon: Icon(Icons.more_horiz),
-                                ),
                               ),
-                            );
-                          },
-                        ),
+                              title: Text(place.name),
+                              subtitle: Text('${place.address.city ?? ' '}, '
+                                  '${place.address.street ?? ' '}, '
+                                  '${place.address.house ?? ' '}'),
+                              trailing: IconButton(
+                                onPressed: () => wm.openPlace(place),
+                                icon: Icon(Icons.more_horiz),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
-                ],
-              );
-            }),
-        floatingActionButton: PointerContext(
-          child: FloatingActionButton(
-            onPressed: wm.choseCity,
-            child: const Icon(
-              Icons.location_city,
-            ),
+                ),
+              ],
+            );
+          }),
+      floatingActionButton: PointerContext(
+        child: FloatingActionButton(
+          onPressed: wm.choseCity,
+          child: const Icon(
+            Icons.location_city,
           ),
         ),
       ),

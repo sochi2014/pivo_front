@@ -152,8 +152,14 @@ abstract class AppLocalizations {
   /// No description provided for @chat.
   ///
   /// In en, this message translates to:
-  /// **'Chat'**
+  /// **'Teemates'**
   String get chat;
+
+  /// No description provided for @emptyPeople.
+  ///
+  /// In en, this message translates to:
+  /// **'No teammates nearby'**
+  String get emptyPeople;
 
   /// No description provided for @profile.
   ///

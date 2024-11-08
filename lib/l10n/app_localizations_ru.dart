@@ -34,7 +34,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get map => 'Поиск';
 
   @override
-  String get chat => 'Чат';
+  String get chat => 'Собутыльники';
+
+  @override
+  String get emptyPeople => 'Нет собутыльников рядом';
 
   @override
   String get profile => 'Профиль';

@@ -86,7 +86,10 @@ class AppRouter extends RootStackRouter {
             AutoRoute(
               page: ChatsTab.page,
               children: [
-                AutoRoute(page: DisableRoute.page),
+                AutoRoute(
+                  page: TeamRouteWidget.page,
+                  initial: true,
+                ),
               ],
             ),
             AutoRoute(
